@@ -16,6 +16,8 @@
 		411C2F372719D1C90008B7AB /* EventAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411C2F362719D1C90008B7AB /* EventAppTests.swift */; };
 		411C2F422719D1CA0008B7AB /* EventAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411C2F412719D1CA0008B7AB /* EventAppUITests.swift */; };
 		411C2F522719FAF10008B7AB /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411C2F512719FAF10008B7AB /* R.generated.swift */; };
+		411C2F552719FDC80008B7AB /* EventTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411C2F542719FDC80008B7AB /* EventTypes.swift */; };
+		411C2F572719FE2E0008B7AB /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411C2F562719FE2E0008B7AB /* Events.swift */; };
 		5DBE40CDEBA05277580B1CD6 /* Pods_EventApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28454B46CF59C45365506ED6 /* Pods_EventApp.framework */; };
 		B0D8AC67537339BC35933FB2 /* Pods_EventAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 780328F13A5EBF402175D5AB /* Pods_EventAppTests.framework */; };
 		CD8E6EA5E00FCF9789FF31E4 /* Pods_EventApp_EventAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20C304AAECD6F3DBEF234859 /* Pods_EventApp_EventAppUITests.framework */; };
@@ -58,6 +60,8 @@
 		411C2F412719D1CA0008B7AB /* EventAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventAppUITests.swift; sourceTree = "<group>"; };
 		411C2F432719D1CA0008B7AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		411C2F512719FAF10008B7AB /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
+		411C2F542719FDC80008B7AB /* EventTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EventTypes.swift; path = ../../../EventTypes.swift; sourceTree = "<group>"; };
+		411C2F562719FE2E0008B7AB /* Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Events.swift; sourceTree = "<group>"; };
 		780328F13A5EBF402175D5AB /* Pods_EventAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EventAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8294D671CB9B0A0C4EB1D7CD /* Pods-EventAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EventAppTests.release.xcconfig"; path = "Target Support Files/Pods-EventAppTests/Pods-EventAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		9CEC2BA56F12E542801B0050 /* Pods-EventAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EventAppTests.debug.xcconfig"; path = "Target Support Files/Pods-EventAppTests/Pods-EventAppTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -118,6 +122,7 @@
 		411C2F1E2719D1C30008B7AB /* EventApp */ = {
 			isa = PBXGroup;
 			children = (
+				411C2F532719FD4A0008B7AB /* Models */,
 				411C2F1F2719D1C30008B7AB /* AppDelegate.swift */,
 				411C2F212719D1C30008B7AB /* SceneDelegate.swift */,
 				411C2F232719D1C30008B7AB /* ViewController.swift */,
@@ -146,6 +151,15 @@
 				411C2F432719D1CA0008B7AB /* Info.plist */,
 			);
 			path = EventAppUITests;
+			sourceTree = "<group>";
+		};
+		411C2F532719FD4A0008B7AB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				411C2F542719FDC80008B7AB /* EventTypes.swift */,
+				411C2F562719FE2E0008B7AB /* Events.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		79DA58AC6A23ECC29B21F4AC /* Frameworks */ = {
@@ -449,7 +463,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				411C2F572719FE2E0008B7AB /* Events.swift in Sources */,
 				411C2F242719D1C30008B7AB /* ViewController.swift in Sources */,
+				411C2F552719FDC80008B7AB /* EventTypes.swift in Sources */,
 				411C2F202719D1C30008B7AB /* AppDelegate.swift in Sources */,
 				411C2F222719D1C30008B7AB /* SceneDelegate.swift in Sources */,
 				411C2F522719FAF10008B7AB /* R.generated.swift in Sources */,
