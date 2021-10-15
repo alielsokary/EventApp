@@ -7,13 +7,23 @@
 //
 
 import UIKit
+#if canImport(AlamofireNetworkActivityLogger)
+import AlamofireNetworkActivityLogger
+#endif
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-		// Override point for customization after application launch.
+		configureNetworkLogger()
 		return true
+	}
+
+	private func configureNetworkLogger() {
+		#if DEBUG
+		NetworkActivityLogger.shared.level = .debug
+		NetworkActivityLogger.shared.startLogging()
+		#endif
 	}
 
 	// MARK: UISceneSession Lifecycle
