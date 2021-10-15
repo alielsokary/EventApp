@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  SplashViewController.swift
 //  EventApp
 //
 //  Created by Ali Elsokary on 15/10/2021.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class SplashViewController: UIViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
