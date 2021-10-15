@@ -33,6 +33,30 @@
             </objects>
             <point key="canvasLocation" x="132" y="100"/>
         </scene>
+        <!--Events View Controller-->
+        <scene sceneID="vQv-TA-1u3">
+            <objects>
+                <viewController storyboardIdentifier="EventsViewController" id="S8Z-gx-vSE" customClass="EventsViewController" customModule="EventApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zXw-1K-vxz">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Events" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vnx-jY-q9n">
+                                <rect key="frame" x="186" y="438" width="51" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="lVo-j5-9D2"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="44A-zl-4Ee" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="954" y="100"/>
+        </scene>
     </scenes>
     <resources>
         <systemColor name="systemBackgroundColor">

@@ -28,6 +28,10 @@
 		411C2F6B271A18DA0008B7AB /* Typealias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411C2F6A271A18DA0008B7AB /* Typealias.swift */; };
 		411C2F6D271A18FC0008B7AB /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411C2F6C271A18FC0008B7AB /* AppCoordinator.swift */; };
 		411C2F72271A1F0B0008B7AB /* SplashCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411C2F71271A1F0B0008B7AB /* SplashCoordinator.swift */; };
+		411C2F79271A25F90008B7AB /* EventsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411C2F78271A25F80008B7AB /* EventsService.swift */; };
+		411C2F7B271A26590008B7AB /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411C2F7A271A26590008B7AB /* EventsViewController.swift */; };
+		411C2F7D271A267B0008B7AB /* EventsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411C2F7C271A267B0008B7AB /* EventsCoordinator.swift */; };
+		411C2F7F271A35110008B7AB /* EventsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411C2F7E271A35110008B7AB /* EventsViewModel.swift */; };
 		5DBE40CDEBA05277580B1CD6 /* Pods_EventApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28454B46CF59C45365506ED6 /* Pods_EventApp.framework */; };
 		B0D8AC67537339BC35933FB2 /* Pods_EventAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 780328F13A5EBF402175D5AB /* Pods_EventAppTests.framework */; };
 		CD8E6EA5E00FCF9789FF31E4 /* Pods_EventApp_EventAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20C304AAECD6F3DBEF234859 /* Pods_EventApp_EventAppUITests.framework */; };
@@ -82,6 +86,10 @@
 		411C2F6A271A18DA0008B7AB /* Typealias.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typealias.swift; sourceTree = "<group>"; };
 		411C2F6C271A18FC0008B7AB /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		411C2F71271A1F0B0008B7AB /* SplashCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashCoordinator.swift; sourceTree = "<group>"; };
+		411C2F78271A25F80008B7AB /* EventsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsService.swift; sourceTree = "<group>"; };
+		411C2F7A271A26590008B7AB /* EventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
+		411C2F7C271A267B0008B7AB /* EventsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsCoordinator.swift; sourceTree = "<group>"; };
+		411C2F7E271A35110008B7AB /* EventsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewModel.swift; sourceTree = "<group>"; };
 		780328F13A5EBF402175D5AB /* Pods_EventAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EventAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8294D671CB9B0A0C4EB1D7CD /* Pods-EventAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EventAppTests.release.xcconfig"; path = "Target Support Files/Pods-EventAppTests/Pods-EventAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		9CEC2BA56F12E542801B0050 /* Pods-EventAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EventAppTests.debug.xcconfig"; path = "Target Support Files/Pods-EventAppTests/Pods-EventAppTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -227,6 +235,7 @@
 			isa = PBXGroup;
 			children = (
 				411C2F6F271A1EED0008B7AB /* Splash */,
+				411C2F73271A259C0008B7AB /* Events */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -235,7 +244,7 @@
 			isa = PBXGroup;
 			children = (
 				411C2F70271A1EF50008B7AB /* Coordinator */,
-				411C2F232719D1C30008B7AB /* SplashViewController.swift */,
+				411C2F80271A3B370008B7AB /* View */,
 			);
 			path = Splash;
 			sourceTree = "<group>";
@@ -246,6 +255,57 @@
 				411C2F71271A1F0B0008B7AB /* SplashCoordinator.swift */,
 			);
 			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		411C2F73271A259C0008B7AB /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				411C2F74271A25AB0008B7AB /* Coordinator */,
+				411C2F76271A25BC0008B7AB /* Service */,
+				411C2F77271A25C30008B7AB /* View Model */,
+				411C2F75271A25B10008B7AB /* View */,
+			);
+			path = Events;
+			sourceTree = "<group>";
+		};
+		411C2F74271A25AB0008B7AB /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				411C2F7C271A267B0008B7AB /* EventsCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		411C2F75271A25B10008B7AB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				411C2F7A271A26590008B7AB /* EventsViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		411C2F76271A25BC0008B7AB /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				411C2F78271A25F80008B7AB /* EventsService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		411C2F77271A25C30008B7AB /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+				411C2F7E271A35110008B7AB /* EventsViewModel.swift */,
+			);
+			path = "View Model";
+			sourceTree = "<group>";
+		};
+		411C2F80271A3B370008B7AB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				411C2F232719D1C30008B7AB /* SplashViewController.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		79DA58AC6A23ECC29B21F4AC /* Frameworks */ = {
@@ -549,11 +609,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				411C2F7D271A267B0008B7AB /* EventsCoordinator.swift in Sources */,
 				411C2F5B271A03390008B7AB /* URLRequestBuilder.swift in Sources */,
 				411C2F72271A1F0B0008B7AB /* SplashCoordinator.swift in Sources */,
 				411C2F572719FE2E0008B7AB /* Events.swift in Sources */,
 				411C2F68271A17D10008B7AB /* BaseCoordinator.swift in Sources */,
+				411C2F7F271A35110008B7AB /* EventsViewModel.swift in Sources */,
 				411C2F242719D1C30008B7AB /* SplashViewController.swift in Sources */,
+				411C2F79271A25F90008B7AB /* EventsService.swift in Sources */,
 				411C2F61271A07410008B7AB /* APIError.swift in Sources */,
 				411C2F5F271A05400008B7AB /* EventtusRouter.swift in Sources */,
 				411C2F6B271A18DA0008B7AB /* Typealias.swift in Sources */,
@@ -565,6 +628,7 @@
 				411C2F6D271A18FC0008B7AB /* AppCoordinator.swift in Sources */,
 				411C2F222719D1C30008B7AB /* SceneDelegate.swift in Sources */,
 				411C2F522719FAF10008B7AB /* R.generated.swift in Sources */,
+				411C2F7B271A26590008B7AB /* EventsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
