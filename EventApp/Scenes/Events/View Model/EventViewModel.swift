@@ -10,10 +10,11 @@ import Foundation
 import RxSwift
 
 struct EventViewModel {
-	let longitude, latitude, endDate, startDate: String?
-	let eventDescription: String?
-	let cover: String?
 	let name, id: String?
+	let cover: String?
+	let eventDescription: String?
+	let longitude, latitude: String?
+	let endDate, startDate: String?
 
 	init(event: Event) {
 		self.id = event.id

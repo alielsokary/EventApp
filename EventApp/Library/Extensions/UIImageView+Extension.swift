@@ -11,6 +11,6 @@ import Kingfisher
 
 extension UIImageView {
 	func setImage(imageURL: String?) {
-		self.kf.setImage(with: URL(string: imageURL ?? ""), placeholder: Images.eventAppIcon())
+		self.kf.setImage(with: URL(string: imageURL ?? ""), placeholder: Images.placeholderIcon())
 	}
 }

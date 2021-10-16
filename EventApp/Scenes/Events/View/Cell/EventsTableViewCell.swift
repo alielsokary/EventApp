@@ -35,6 +35,7 @@ class EventTableViewCell: UITableViewCell {
 extension EventTableViewCell {
 
 	func setupUI() {
+		self.selectionStyle = .none
 		lblEventName.textColor = Colors.titles()
 		lblEventDescription.textColor = Colors.subtitles()
 		lblEventDate.textColor = Colors.subtitles()

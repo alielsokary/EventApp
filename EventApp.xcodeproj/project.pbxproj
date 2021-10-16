@@ -11,6 +11,7 @@
 		41127129271B31C6002F72E0 /* EventDetailsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41127128271B31C6002F72E0 /* EventDetailsCoordinator.swift */; };
 		4112712B271B31D9002F72E0 /* EventDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4112712A271B31D9002F72E0 /* EventDetailsViewController.swift */; };
 		4112712E271B36AC002F72E0 /* EventDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4112712D271B36AC002F72E0 /* EventDetailsViewModel.swift */; };
+		41127130271B5A9F002F72E0 /* MKMapView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4112712F271B5A9F002F72E0 /* MKMapView+Extension.swift */; };
 		411C2F202719D1C30008B7AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411C2F1F2719D1C30008B7AB /* AppDelegate.swift */; };
 		411C2F222719D1C30008B7AB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411C2F212719D1C30008B7AB /* SceneDelegate.swift */; };
 		411C2F242719D1C30008B7AB /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411C2F232719D1C30008B7AB /* SplashViewController.swift */; };
@@ -78,6 +79,7 @@
 		41127128271B31C6002F72E0 /* EventDetailsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EventDetailsCoordinator.swift; path = "EventApp/Scenes/Event Details/ViewModel/EventDetailsCoordinator.swift"; sourceTree = SOURCE_ROOT; };
 		4112712A271B31D9002F72E0 /* EventDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailsViewController.swift; sourceTree = "<group>"; };
 		4112712D271B36AC002F72E0 /* EventDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailsViewModel.swift; sourceTree = "<group>"; };
+		4112712F271B5A9F002F72E0 /* MKMapView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKMapView+Extension.swift"; sourceTree = "<group>"; };
 		411C2F1C2719D1C30008B7AB /* EventApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EventApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		411C2F1F2719D1C30008B7AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		411C2F212719D1C30008B7AB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -394,6 +396,7 @@
 				411C2F8D271A63710008B7AB /* UIImageView+Extension.swift */,
 				411C2F8F271AF89E0008B7AB /* String+Extension.swift */,
 				41127120271B1D1D002F72E0 /* RxSwift+Extension.swift */,
+				4112712F271B5A9F002F72E0 /* MKMapView+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -736,6 +739,7 @@
 				411C2F83271A3CE00008B7AB /* EventsTableViewCell.swift in Sources */,
 				411C2F5B271A03390008B7AB /* URLRequestBuilder.swift in Sources */,
 				41127121271B1D1D002F72E0 /* RxSwift+Extension.swift in Sources */,
+				41127130271B5A9F002F72E0 /* MKMapView+Extension.swift in Sources */,
 				411C2F87271A451E0008B7AB /* EventViewModel.swift in Sources */,
 				4112712B271B31D9002F72E0 /* EventDetailsViewController.swift in Sources */,
 				411C2F8E271A63710008B7AB /* UIImageView+Extension.swift in Sources */,
