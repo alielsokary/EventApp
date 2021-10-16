@@ -10,3 +10,5 @@ import Foundation
 import Rswift
 
 typealias Storyboard = R.storyboard
+typealias Nib = R.nib
+typealias ReuseIdentifier = R.reuseIdentifier

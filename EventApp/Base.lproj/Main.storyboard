@@ -41,17 +41,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Events" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vnx-jY-q9n">
-                                <rect key="frame" x="186" y="438" width="51" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Nzc-l6-G2S">
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="lVo-j5-9D2"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="Nzc-l6-G2S" secondAttribute="bottom" id="5gu-wR-4E5"/>
+                            <constraint firstItem="Nzc-l6-G2S" firstAttribute="top" secondItem="lVo-j5-9D2" secondAttribute="top" id="7JQ-kP-bBW"/>
+                            <constraint firstItem="lVo-j5-9D2" firstAttribute="trailing" secondItem="Nzc-l6-G2S" secondAttribute="trailing" id="I3x-Zz-zyw"/>
+                            <constraint firstItem="Nzc-l6-G2S" firstAttribute="leading" secondItem="lVo-j5-9D2" secondAttribute="leading" id="ZEN-j5-097"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="Nzc-l6-G2S" id="u3D-oE-mkR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="44A-zl-4Ee" sceneMemberID="firstResponder"/>
             </objects>

@@ -7,10 +7,18 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class EventsViewController: UIViewController {
 
+	@IBOutlet weak var tableView: UITableView!
+
 	private let viewModel: EventsViewModel!
+	private let disposeBag = DisposeBag()
+
+	private let nib = Nib.eventTableViewCell
+	private let cellIdentifier = ReuseIdentifier.eventTableViewCell.identifier
 
 	required init?(coder: NSCoder, viewModel: EventsViewModel) {
 		self.viewModel = viewModel
@@ -24,6 +32,9 @@ class EventsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		setupUI()
+		configureTableView()
+		setupBindings()
+		selectionBindings()
 
     }
 
@@ -35,5 +46,49 @@ private extension EventsViewController {
 
 	func setupUI() {
 		self.navigationItem.setHidesBackButton(true, animated: true)
+	}
+}
+
+// MARK: - TableView Configurations
+
+private extension EventsViewController {
+
+	func configureTableView() {
+		tableView.estimatedRowHeight = 250
+		tableView.register(nib)
+		tableView.dataSource = nil
+		tableView.delegate = nil
+		tableView.rx.setDelegate(self)
+			.disposed(by: disposeBag)
+	}
+}
+
+// MARK: - Setup Bindings
+
+private extension EventsViewController {
+
+	func setupBindings() {
+		viewModel.events
+			.observe(on: MainScheduler.instance)
+			.bind(to: tableView.rx.items(cellIdentifier: cellIdentifier, cellType: EventTableViewCell.self)) { _, viewModel, cell in
+				cell.viewModel = viewModel
+			}.disposed(by: disposeBag)
+
+		viewModel.start()
+	}
+
+	func selectionBindings() {
+		tableView.rx.modelSelected(EventViewModel.self)
+			.bind(to: viewModel.selectedEvent)
+			.disposed(by: disposeBag)
+	}
+}
+
+// MARK: - TableView Delegate
+
+extension EventsViewController: UITableViewDelegate {
+
+	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+		return UITableView.automaticDimension
 	}
 }
