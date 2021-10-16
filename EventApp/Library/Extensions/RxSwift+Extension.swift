@@ -12,8 +12,10 @@ import RxSwift
 // MARK: - UIButton
 extension Reactive where Base: UIButton {
 	public var favorited: Binder<Bool> {
+		let starFilledIcon = Images.starFilledIcon()?.withTintColor(Colors.gold()!)
+		let starUnfilledIcon = Images.starUnfilledIcon()?.withTintColor(Colors.gold()!)
 		return Binder(self.base) { button, valid in
-			button.imageView?.image = valid ? Images.starFilledIcon()?.withTintColor(Colors.gold()!) : Images.starUnfilledIcon()?.withTintColor(Colors.gold()!)
+			button.imageView?.image = valid ? starFilledIcon : starUnfilledIcon
 		}
 	}
 }

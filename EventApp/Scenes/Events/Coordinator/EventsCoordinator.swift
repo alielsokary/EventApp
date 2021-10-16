@@ -23,8 +23,22 @@ class EventsCoordinator: BaseCoordinator<Void> {
 			return EventsViewController(coder: coder, viewModel: viewModel)
 		}
 
+		viewModel.selectedEvent
+			.flatMap({ [unowned self] (event) in
+			self.coordinateToEventDetails(with: event)
+			})
+			.subscribe()
+			.disposed(by: disposeBag)
+
 		rootViewController.navigationController?.pushViewController(viewController, animated: false)
 
 		return Observable.empty()
+	}
+
+	private func coordinateToEventDetails(with viewModel: EventViewModel) -> Observable<Void> {
+		let eventDetailsCoordinator = EventDetailsCoordinator(rootViewController: rootViewController, viewModel: viewModel)
+		return coordinate(to: eventDetailsCoordinator)
+			.map { _ in () }
+
 	}
 }
