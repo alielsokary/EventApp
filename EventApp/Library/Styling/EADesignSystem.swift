@@ -55,7 +55,7 @@ extension UIColor {
 	@nonobjc class var background: UIColor {
 		return Colors.background()!
 	}
-	
+
 	@nonobjc class var gold: UIColor {
 		return Colors.gold()!
 	}

@@ -70,6 +70,33 @@
             </objects>
             <point key="canvasLocation" x="954" y="100"/>
         </scene>
+        <!--Event Details View Controller-->
+        <scene sceneID="evP-6q-KM2">
+            <objects>
+                <viewController storyboardIdentifier="EventDetailsViewController" id="cqf-0n-Aej" customClass="EventDetailsViewController" customModule="EventApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="D4V-Ua-GcW">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M1c-Hd-cCJ" customClass="EABoldLabel" customModule="EventApp" customModuleProvider="target">
+                                <rect key="frame" x="186" y="438" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="J3b-5h-zra"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <connections>
+                        <outlet property="lblEventName" destination="M1c-Hd-cCJ" id="vLY-JH-mZS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gbo-v4-l47" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1623" y="100"/>
+        </scene>
     </scenes>
     <resources>
         <image name="EventApp-icon" width="256.5" height="256.5"/>
