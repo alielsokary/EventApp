@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Kingfisher
 
 class EventTableViewCell: UITableViewCell {
 
@@ -36,6 +35,6 @@ extension EventTableViewCell {
 		lblEventName.text = viewModel.name
 		lblEventDescription.text = viewModel.eventDescription
 		lblEventDate.text = viewModel.startDate
-		imgvEvent.kf.setImage(with: URL(string: viewModel.cover ?? ""), placeholder: R.image.eventAppIcon())
+		imgvEvent.setImage(imageURL: viewModel.cover)
 	}
 }
