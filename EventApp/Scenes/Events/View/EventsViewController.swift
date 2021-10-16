@@ -46,6 +46,9 @@ private extension EventsViewController {
 
 	func setupUI() {
 		self.navigationItem.setHidesBackButton(true, animated: true)
+		viewModel.title
+			.bind(to: self.rx.title)
+			.disposed(by: disposeBag)
 	}
 }
 
@@ -54,6 +57,7 @@ private extension EventsViewController {
 private extension EventsViewController {
 
 	func configureTableView() {
+		tableView.separatorStyle = .none
 		tableView.estimatedRowHeight = 250
 		tableView.register(nib)
 		tableView.dataSource = nil
@@ -91,4 +95,5 @@ extension EventsViewController: UITableViewDelegate {
 	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 		return UITableView.automaticDimension
 	}
+
 }

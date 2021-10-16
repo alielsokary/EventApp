@@ -16,7 +16,7 @@ class EventTableViewCell: UITableViewCell {
 	@IBOutlet weak var lblEventDescription: UILabel!
 	@IBOutlet weak var lblEventDate: UILabel!
 	@IBOutlet weak var btnFavoriteEvent: UIButton!
-	
+
 	override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -27,7 +27,7 @@ class EventTableViewCell: UITableViewCell {
 			self.configure()
 		}
 	}
-    
+
 }
 
 extension EventTableViewCell {
@@ -36,6 +36,6 @@ extension EventTableViewCell {
 		lblEventName.text = viewModel.name
 		lblEventDescription.text = viewModel.eventDescription
 		lblEventDate.text = viewModel.startDate
-		imgvEvent.kf.setImage(with: URL(string: viewModel.cover ?? ""), placeholder: UIImage())
+		imgvEvent.kf.setImage(with: URL(string: viewModel.cover ?? ""), placeholder: R.image.eventAppIcon())
 	}
 }

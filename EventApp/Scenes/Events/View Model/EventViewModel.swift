@@ -13,7 +13,7 @@ struct EventViewModel {
 	let eventDescription: String?
 	let cover: String?
 	let name, id: String?
-	
+
 	init(event: Event) {
 		self.id = event.id
 		self.name = event.name

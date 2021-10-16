@@ -15,6 +15,8 @@ class EventsViewModel {
 	private let service: EventsService!
 	private let disposeBag = DisposeBag()
 
+	let title = BehaviorRelay<String>(value: "Events")
+
 	let isLoading = BehaviorSubject<Bool>(value: false)
 	let noInternet = BehaviorSubject<Bool>(value: false)
 	private let _alertMessage = PublishSubject<String>()
@@ -22,14 +24,13 @@ class EventsViewModel {
 	let events = BehaviorSubject<[EventViewModel]>(value: [])
 	let selectedEvent = PublishSubject<EventViewModel>()
 
-
 	let alertMessage: Observable<String>
 
 	init(service: EventsService) {
 		self.service = service
 		self.alertMessage = _alertMessage.asObservable()
 	}
-	
+
 	func start() {
 		self.isLoading.onNext(true)
 		self.noInternet.onNext(false)
