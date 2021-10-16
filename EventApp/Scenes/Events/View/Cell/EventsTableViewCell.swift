@@ -34,7 +34,7 @@ extension EventTableViewCell {
 	func configure() {
 		lblEventName.text = viewModel.name
 		lblEventDescription.text = viewModel.eventDescription
-		lblEventDate.text = viewModel.startDate
+		lblEventDate.text = viewModel.startDate?.formatedShortDate
 		imgvEvent.setImage(imageURL: viewModel.cover)
 	}
 }

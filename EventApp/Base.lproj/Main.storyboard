@@ -21,7 +21,7 @@
                                 <rect key="frame" x="79" y="320" width="256.5" height="256.5"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="event-app-title-icon" translatesAutoresizingMaskIntoConstraints="NO" id="f2Z-Ne-swf">
-                                <rect key="frame" x="30" y="136" width="354" height="84"/>
+                                <rect key="frame" x="30" y="596.5" width="354" height="84"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -31,8 +31,8 @@
                             <constraint firstItem="AHc-Ob-2Bb" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="EuO-3f-RVa"/>
                             <constraint firstItem="f2Z-Ne-swf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="30" id="JVk-tL-K34"/>
                             <constraint firstAttribute="trailing" secondItem="f2Z-Ne-swf" secondAttribute="trailing" constant="30" id="R2r-d3-xO3"/>
-                            <constraint firstItem="AHc-Ob-2Bb" firstAttribute="top" secondItem="f2Z-Ne-swf" secondAttribute="bottom" constant="100" id="gaq-qv-96R"/>
-                            <constraint firstItem="AHc-Ob-2Bb" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="wBc-L2-Pg4"/>
+                            <constraint firstItem="f2Z-Ne-swf" firstAttribute="top" secondItem="AHc-Ob-2Bb" secondAttribute="bottom" constant="20" id="gaq-qv-96R"/>
+                            <constraint firstAttribute="centerY" secondItem="AHc-Ob-2Bb" secondAttribute="centerY" id="wBc-L2-Pg4"/>
                         </constraints>
                     </view>
                 </viewController>
