@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		41127121271B1D1D002F72E0 /* RxSwift+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41127120271B1D1D002F72E0 /* RxSwift+Extension.swift */; };
 		411C2F202719D1C30008B7AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411C2F1F2719D1C30008B7AB /* AppDelegate.swift */; };
 		411C2F222719D1C30008B7AB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411C2F212719D1C30008B7AB /* SceneDelegate.swift */; };
 		411C2F242719D1C30008B7AB /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411C2F232719D1C30008B7AB /* SplashViewController.swift */; };
@@ -37,6 +38,12 @@
 		411C2F8B271A629C0008B7AB /* EventTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411C2F8A271A629C0008B7AB /* EventTypes.swift */; };
 		411C2F8E271A63710008B7AB /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411C2F8D271A63710008B7AB /* UIImageView+Extension.swift */; };
 		411C2F90271AF89E0008B7AB /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411C2F8F271AF89E0008B7AB /* String+Extension.swift */; };
+		411C2F97271B0BAC0008B7AB /* EADesignSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411C2F96271B0BAC0008B7AB /* EADesignSystem.swift */; };
+		411C2F99271B0CC60008B7AB /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 411C2F98271B0CC60008B7AB /* Colors.xcassets */; };
+		411C2F9E271B11220008B7AB /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 411C2F9B271B11220008B7AB /* Roboto-Black.ttf */; };
+		411C2F9F271B11220008B7AB /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 411C2F9C271B11220008B7AB /* Roboto-Medium.ttf */; };
+		411C2FA0271B11220008B7AB /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 411C2F9D271B11220008B7AB /* Roboto-Regular.ttf */; };
+		411C2FA3271B11C10008B7AB /* EALabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411C2FA2271B11C10008B7AB /* EALabel.swift */; };
 		5DBE40CDEBA05277580B1CD6 /* Pods_EventApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28454B46CF59C45365506ED6 /* Pods_EventApp.framework */; };
 		B0D8AC67537339BC35933FB2 /* Pods_EventAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 780328F13A5EBF402175D5AB /* Pods_EventAppTests.framework */; };
 		CD8E6EA5E00FCF9789FF31E4 /* Pods_EventApp_EventAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20C304AAECD6F3DBEF234859 /* Pods_EventApp_EventAppUITests.framework */; };
@@ -64,6 +71,7 @@
 		20C304AAECD6F3DBEF234859 /* Pods_EventApp_EventAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EventApp_EventAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		28454B46CF59C45365506ED6 /* Pods_EventApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EventApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F2F017BDE60713AC34AADD6 /* Pods-EventApp-EventAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EventApp-EventAppUITests.release.xcconfig"; path = "Target Support Files/Pods-EventApp-EventAppUITests/Pods-EventApp-EventAppUITests.release.xcconfig"; sourceTree = "<group>"; };
+		41127120271B1D1D002F72E0 /* RxSwift+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RxSwift+Extension.swift"; sourceTree = "<group>"; };
 		411C2F1C2719D1C30008B7AB /* EventApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EventApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		411C2F1F2719D1C30008B7AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		411C2F212719D1C30008B7AB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -100,6 +108,12 @@
 		411C2F8A271A629C0008B7AB /* EventTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTypes.swift; sourceTree = "<group>"; };
 		411C2F8D271A63710008B7AB /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		411C2F8F271AF89E0008B7AB /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		411C2F96271B0BAC0008B7AB /* EADesignSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EADesignSystem.swift; sourceTree = "<group>"; };
+		411C2F98271B0CC60008B7AB /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		411C2F9B271B11220008B7AB /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
+		411C2F9C271B11220008B7AB /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
+		411C2F9D271B11220008B7AB /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		411C2FA2271B11C10008B7AB /* EALabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EALabel.swift; sourceTree = "<group>"; };
 		780328F13A5EBF402175D5AB /* Pods_EventAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EventAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8294D671CB9B0A0C4EB1D7CD /* Pods-EventAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EventAppTests.release.xcconfig"; path = "Target Support Files/Pods-EventAppTests/Pods-EventAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		9CEC2BA56F12E542801B0050 /* Pods-EventAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EventAppTests.debug.xcconfig"; path = "Target Support Files/Pods-EventAppTests/Pods-EventAppTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -167,6 +181,7 @@
 				411C2F66271A17B50008B7AB /* Library */,
 				411C2F252719D1C30008B7AB /* Main.storyboard */,
 				411C2F88271A62800008B7AB /* Assets.xcassets */,
+				411C2F98271B0CC60008B7AB /* Colors.xcassets */,
 				411C2F2A2719D1C90008B7AB /* LaunchScreen.storyboard */,
 				411C2F2D2719D1C90008B7AB /* Info.plist */,
 				411C2F512719FAF10008B7AB /* R.generated.swift */,
@@ -225,6 +240,8 @@
 		411C2F66271A17B50008B7AB /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				411C2F9A271B11060008B7AB /* Fonts */,
+				411C2F95271B0B850008B7AB /* Styling */,
 				411C2F8C271A63580008B7AB /* Extensions */,
 				411C2F67271A17D10008B7AB /* BaseCoordinator.swift */,
 				411C2F6A271A18DA0008B7AB /* Typealias.swift */,
@@ -335,8 +352,36 @@
 			children = (
 				411C2F8D271A63710008B7AB /* UIImageView+Extension.swift */,
 				411C2F8F271AF89E0008B7AB /* String+Extension.swift */,
+				41127120271B1D1D002F72E0 /* RxSwift+Extension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		411C2F95271B0B850008B7AB /* Styling */ = {
+			isa = PBXGroup;
+			children = (
+				411C2FA1271B118D0008B7AB /* Custom Component */,
+				411C2F96271B0BAC0008B7AB /* EADesignSystem.swift */,
+			);
+			path = Styling;
+			sourceTree = "<group>";
+		};
+		411C2F9A271B11060008B7AB /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				411C2F9B271B11220008B7AB /* Roboto-Black.ttf */,
+				411C2F9C271B11220008B7AB /* Roboto-Medium.ttf */,
+				411C2F9D271B11220008B7AB /* Roboto-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		411C2FA1271B118D0008B7AB /* Custom Component */ = {
+			isa = PBXGroup;
+			children = (
+				411C2FA2271B11C10008B7AB /* EALabel.swift */,
+			);
+			path = "Custom Component";
 			sourceTree = "<group>";
 		};
 		79DA58AC6A23ECC29B21F4AC /* Frameworks */ = {
@@ -472,10 +517,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				411C2F99271B0CC60008B7AB /* Colors.xcassets in Resources */,
 				411C2F84271A3CE00008B7AB /* EventTableViewCell.xib in Resources */,
+				411C2FA0271B11220008B7AB /* Roboto-Regular.ttf in Resources */,
 				411C2F2C2719D1C90008B7AB /* LaunchScreen.storyboard in Resources */,
+				411C2F9F271B11220008B7AB /* Roboto-Medium.ttf in Resources */,
 				411C2F272719D1C30008B7AB /* Main.storyboard in Resources */,
 				411C2F89271A62800008B7AB /* Assets.xcassets in Resources */,
+				411C2F9E271B11220008B7AB /* Roboto-Black.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -644,6 +693,7 @@
 				411C2F7D271A267B0008B7AB /* EventsCoordinator.swift in Sources */,
 				411C2F83271A3CE00008B7AB /* EventsTableViewCell.swift in Sources */,
 				411C2F5B271A03390008B7AB /* URLRequestBuilder.swift in Sources */,
+				41127121271B1D1D002F72E0 /* RxSwift+Extension.swift in Sources */,
 				411C2F87271A451E0008B7AB /* EventViewModel.swift in Sources */,
 				411C2F8E271A63710008B7AB /* UIImageView+Extension.swift in Sources */,
 				411C2F72271A1F0B0008B7AB /* SplashCoordinator.swift in Sources */,
@@ -658,6 +708,8 @@
 				411C2F63271A07F20008B7AB /* APIClient.swift in Sources */,
 				411C2F65271A09660008B7AB /* ServicePaths.swift in Sources */,
 				411C2F90271AF89E0008B7AB /* String+Extension.swift in Sources */,
+				411C2F97271B0BAC0008B7AB /* EADesignSystem.swift in Sources */,
+				411C2FA3271B11C10008B7AB /* EALabel.swift in Sources */,
 				411C2F5D271A03740008B7AB /* APIConstants.swift in Sources */,
 				411C2F202719D1C30008B7AB /* AppDelegate.swift in Sources */,
 				411C2F6D271A18FC0008B7AB /* AppCoordinator.swift in Sources */,

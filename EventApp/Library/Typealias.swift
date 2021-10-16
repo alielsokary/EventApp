@@ -13,3 +13,5 @@ typealias Storyboard = R.storyboard
 typealias Nib = R.nib
 typealias ReuseIdentifier = R.reuseIdentifier
 typealias Images = R.image
+typealias Fonts = R.font
+typealias Colors = R.color

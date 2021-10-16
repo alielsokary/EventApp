@@ -45,6 +45,7 @@ class EventsViewController: UIViewController {
 private extension EventsViewController {
 
 	func setupUI() {
+		self.view.backgroundColor = Colors.background()
 		self.navigationItem.setHidesBackButton(true, animated: true)
 		viewModel.title
 			.bind(to: self.rx.title)
@@ -58,7 +59,7 @@ private extension EventsViewController {
 
 	func configureTableView() {
 		tableView.separatorStyle = .none
-		tableView.estimatedRowHeight = 250
+		tableView.backgroundColor = .clear
 		tableView.register(nib)
 		tableView.dataSource = nil
 		tableView.delegate = nil
@@ -74,8 +75,18 @@ private extension EventsViewController {
 	func setupBindings() {
 		viewModel.events
 			.observe(on: MainScheduler.instance)
-			.bind(to: tableView.rx.items(cellIdentifier: cellIdentifier, cellType: EventTableViewCell.self)) { _, viewModel, cell in
+			.bind(to: tableView.rx.items(cellIdentifier: cellIdentifier, cellType: EventTableViewCell.self)) { [weak self] _, viewModel, cell in
+				guard let self = self else { return }
 				cell.viewModel = viewModel
+				viewModel.isFavorited
+					.bind(to: cell.btnFavoriteEvent.rx.favorited)
+					.disposed(by: self.disposeBag)
+
+				cell.btnFavoriteEvent.rx.tap
+					.map { viewModel.id }
+					.subscribe(onNext: { id in
+						print("id is: \(id)")
+					}).disposed(by: self.disposeBag)
 			}.disposed(by: disposeBag)
 
 		viewModel.start()
@@ -93,7 +104,7 @@ private extension EventsViewController {
 extension EventsViewController: UITableViewDelegate {
 
 	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-		return UITableView.automaticDimension
+		return 160
 	}
 
 }
