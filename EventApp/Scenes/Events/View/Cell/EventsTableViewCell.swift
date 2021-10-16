@@ -11,13 +11,14 @@ import UIKit
 class EventTableViewCell: UITableViewCell {
 
 	@IBOutlet weak var imgvEvent: UIImageView!
-	@IBOutlet weak var lblEventName: UILabel!
-	@IBOutlet weak var lblEventDescription: UILabel!
-	@IBOutlet weak var lblEventDate: UILabel!
+	@IBOutlet weak var lblEventName: EABoldLabel!
+	@IBOutlet weak var lblEventDescription: EAMediumLabel!
+	@IBOutlet weak var lblEventDate: EARegularLabel!
 	@IBOutlet weak var btnFavoriteEvent: UIButton!
 
 	override func awakeFromNib() {
         super.awakeFromNib()
+		setupUI()
     }
 
 	// MARK: - Properties
@@ -28,6 +29,19 @@ class EventTableViewCell: UITableViewCell {
 	}
 
 }
+
+// MARK: - SetupUI
+
+extension EventTableViewCell {
+
+	func setupUI() {
+		lblEventName.textColor = Colors.titles()
+		lblEventDescription.textColor = Colors.subtitles()
+		lblEventDate.textColor = Colors.subtitles()
+	}
+}
+
+// MARK: - Configure
 
 extension EventTableViewCell {
 

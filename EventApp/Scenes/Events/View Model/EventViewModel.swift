@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RxSwift
 
 struct EventViewModel {
 	let longitude, latitude, endDate, startDate: String?
@@ -24,4 +25,9 @@ struct EventViewModel {
 		self.latitude = event.latitude
 		self.longitude = event.longitude
 	}
+
+	var isFavorited: Observable<Bool> {
+		return Observable.just(false)
+	}
+
 }
