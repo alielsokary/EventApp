@@ -33,8 +33,6 @@ class EventsViewModel {
 
 	let isLoading: Observable<Bool>
 
-	let noInternet: Observable<Bool>
-
 	let alertMessage: Observable<String>
 
 	init(service: EventsService, currentEventType: String = "Music") {
@@ -52,9 +50,6 @@ class EventsViewModel {
 		let _isLoading = BehaviorSubject<Bool>(value: false)
 		self.isLoading = _isLoading.asObserver()
 
-		let _noInternet = BehaviorSubject<Bool>(value: false)
-		self.noInternet = _noInternet.asObserver()
-
 		let _currentEventType = BehaviorSubject<String>(value: currentEventType)
 		self.setEventType = _currentEventType.asObserver()
 
@@ -62,7 +57,6 @@ class EventsViewModel {
 		self.alertMessage = _alertMessage.asObservable()
 
 		_isLoading.onNext(true)
-		_noInternet.onNext(false)
 		self.events = Observable.combineLatest(_reload, _currentEventType) { _, eventType in eventType }
 			.flatMapLatest { eventType in
 				service.getEvents(type: eventType, page: 1).catch { error in
@@ -70,14 +64,16 @@ class EventsViewModel {
 					guard let error = error as? APIError else { return Observable.empty() }
 					switch error {
 					case .noInternet:
-						_noInternet.onNext(true)
+						_isLoading.onNext(false)
 					default:
-						_alertMessage.onNext(error.localizedDescription)
+						_isLoading.onNext(false)
 					}
 					_alertMessage.onNext(error.localizedDescription)
 					return Observable.empty()
 				}
-			}.map { events in events.compactMap { EventViewModel(event: $0) }
+			}.map { events in
+				_isLoading.onNext(false)
+				return events.compactMap { EventViewModel(event: $0) }
 			}
 	}
 }
