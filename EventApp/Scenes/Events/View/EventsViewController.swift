@@ -13,6 +13,7 @@ import RxCocoa
 class EventsViewController: UIViewController {
 
 	@IBOutlet weak var tableView: UITableView!
+	private let refreshControl = UIRefreshControl()
 
 	private let viewModel: EventsViewModel!
 	private let disposeBag = DisposeBag()
@@ -29,14 +30,14 @@ class EventsViewController: UIViewController {
 		fatalError("init(coder:) has not been implemented")
 	}
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+	override func viewDidLoad() {
+		super.viewDidLoad()
 		setupUI()
 		configureTableView()
 		setupBindings()
 		selectionBindings()
-
-    }
+		refreshControl.sendActions(for: .valueChanged)
+	}
 
 }
 
@@ -47,9 +48,7 @@ private extension EventsViewController {
 	func setupUI() {
 		self.view.backgroundColor = Colors.background()
 		self.navigationItem.setHidesBackButton(true, animated: true)
-		viewModel.title
-			.bind(to: self.rx.title)
-			.disposed(by: disposeBag)
+		tableView.insertSubview(refreshControl, at: 0)
 	}
 }
 
@@ -73,8 +72,18 @@ private extension EventsViewController {
 private extension EventsViewController {
 
 	func setupBindings() {
+
+		viewModel.title
+			.bind(to: self.rx.title)
+			.disposed(by: disposeBag)
+
+		refreshControl.rx.controlEvent(.valueChanged)
+			.bind(to: viewModel.reload)
+			.disposed(by: disposeBag)
+
 		viewModel.events
 			.observe(on: MainScheduler.instance)
+			.do(onNext: { [weak self] _ in self?.refreshControl.endRefreshing() })
 			.bind(to: tableView.rx.items(cellIdentifier: cellIdentifier, cellType: EventTableViewCell.self)) { [weak self] _, viewModel, cell in
 				guard let self = self else { return }
 				cell.viewModel = viewModel
@@ -88,8 +97,6 @@ private extension EventsViewController {
 						print("id is: \(id)")
 					}).disposed(by: self.disposeBag)
 			}.disposed(by: disposeBag)
-
-		viewModel.start()
 	}
 
 	func selectionBindings() {
