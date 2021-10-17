@@ -6,6 +6,7 @@ line_length:
   ignores_urls: true
 
 identifier_name:
+  allowed_symbols: "_"
   max_length:
     error: 60
   min_length:

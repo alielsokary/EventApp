@@ -15,42 +15,69 @@ class EventsViewModel {
 	private let service: EventsService!
 	private let disposeBag = DisposeBag()
 
-	let title = BehaviorRelay<String>(value: "Events")
+	// MARK: - Inputs
 
-	let isLoading = BehaviorSubject<Bool>(value: false)
-	let noInternet = BehaviorSubject<Bool>(value: false)
-	private let _alertMessage = PublishSubject<String>()
+	/// Call to reload Events.
+	let reload: AnyObserver<Void>
 
-	let events = BehaviorSubject<[EventViewModel]>(value: [])
+	/// Call to update current Event Type. Causes reload of the Events.
+	let setEventType: AnyObserver<String>
+
 	let selectedEvent = PublishSubject<EventViewModel>()
+
+	// MARK: - Outputs
+
+	let title: Observable<String>
+
+	var events: Observable<[EventViewModel]>
+
+	let isLoading: Observable<Bool>
+
+	let noInternet: Observable<Bool>
 
 	let alertMessage: Observable<String>
 
-	init(service: EventsService) {
+	init(service: EventsService, currentEventType: String = "Music") {
 		self.service = service
+
+		let _title = BehaviorSubject<String>(value: "Events")
+		self.title = _title.asObserver()
+
+		let _events = BehaviorSubject<[EventViewModel]>(value: [])
+		self.events = _events.asObservable()
+
+		let _reload = PublishSubject<Void>()
+		self.reload = _reload.asObserver()
+
+		let _isLoading = BehaviorSubject<Bool>(value: false)
+		self.isLoading = _isLoading.asObserver()
+
+		let _noInternet = BehaviorSubject<Bool>(value: false)
+		self.noInternet = _noInternet.asObserver()
+
+		let _currentEventType = BehaviorSubject<String>(value: currentEventType)
+		self.setEventType = _currentEventType.asObserver()
+
+		let _alertMessage = PublishSubject<String>()
 		self.alertMessage = _alertMessage.asObservable()
-	}
 
-	func start() {
-		self.isLoading.onNext(true)
-		self.noInternet.onNext(false)
-		service.getEvents(type: "Music", page: 1)
-			.subscribe(onNext: { [weak self] events in
-			guard let self = self else { return }
-			self.isLoading.onNext(false)
-				let eventList = events.compactMap { EventViewModel(event: $0) }
-				self.events.onNext(eventList)
-		}, onError: { [weak self] error in
-			self?.isLoading.onNext(false)
-			guard let error = error as? APIError else { return }
-			switch error {
-			case .noInternet:
-				self?.noInternet.onNext(true)
-			default:
-				self?._alertMessage.onNext(error.localizedDescription)
+		_isLoading.onNext(true)
+		_noInternet.onNext(false)
+		self.events = Observable.combineLatest(_reload, _currentEventType) { _, eventType in eventType }
+			.flatMapLatest { eventType in
+				service.getEvents(type: eventType, page: 1).catch { error in
+					_isLoading.onNext(false)
+					guard let error = error as? APIError else { return Observable.empty() }
+					switch error {
+					case .noInternet:
+						_noInternet.onNext(true)
+					default:
+						_alertMessage.onNext(error.localizedDescription)
+					}
+					_alertMessage.onNext(error.localizedDescription)
+					return Observable.empty()
+				}
+			}.map { events in events.compactMap { EventViewModel(event: $0) }
 			}
-		}).disposed(by: disposeBag)
-
 	}
-
 }
