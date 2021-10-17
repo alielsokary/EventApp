@@ -97,6 +97,15 @@ private extension EventsViewController {
 						print("id is: \(id)")
 					}).disposed(by: self.disposeBag)
 			}.disposed(by: disposeBag)
+
+		viewModel.alertMessage
+			.subscribe(onNext: { [weak self] in self?.showMessage($0) })
+			.disposed(by: disposeBag)
+
+		viewModel.isLoading
+			.subscribe { [weak self] isLoading in
+				isLoading ? self?.startLoading() : self?.endLoading()
+			}.disposed(by: disposeBag)
 	}
 
 	func selectionBindings() {
