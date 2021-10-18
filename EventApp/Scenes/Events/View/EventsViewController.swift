@@ -13,6 +13,8 @@ import RxCocoa
 class EventsViewController: UIViewController {
 
 	@IBOutlet weak var tableView: UITableView!
+	@IBOutlet weak var collectionView: UICollectionView!
+
 	private let refreshControl = UIRefreshControl()
 
 	private let viewModel: EventsViewModel!
@@ -20,6 +22,9 @@ class EventsViewController: UIViewController {
 
 	private let nib = Nib.eventTableViewCell
 	private let cellIdentifier = ReuseIdentifier.eventTableViewCell.identifier
+
+	private let eventTypeNib = Nib.eventTypeCollectionViewCell
+	private let eventTypeCellIdentifier = ReuseIdentifier.eventTypeCollectionViewCell.identifier
 
 	required init?(coder: NSCoder, viewModel: EventsViewModel) {
 		self.viewModel = viewModel
@@ -34,6 +39,7 @@ class EventsViewController: UIViewController {
 		super.viewDidLoad()
 		setupUI()
 		configureTableView()
+		configureCollectionView()
 		setupBindings()
 		selectionBindings()
 		refreshControl.sendActions(for: .valueChanged)
@@ -67,6 +73,21 @@ private extension EventsViewController {
 	}
 }
 
+// MARK: - CollectionView Configurations
+
+private extension EventsViewController {
+
+	func configureCollectionView() {
+		collectionView.backgroundColor = .clear
+		collectionView.register(Nib.eventTypeCollectionViewCell)
+		collectionView.showsHorizontalScrollIndicator = false
+		collectionView.dataSource = nil
+		collectionView.delegate = nil
+		collectionView.rx.setDelegate(self)
+			.disposed(by: disposeBag)
+	}
+}
+
 // MARK: - Setup Bindings
 
 private extension EventsViewController {
@@ -80,6 +101,12 @@ private extension EventsViewController {
 		refreshControl.rx.controlEvent(.valueChanged)
 			.bind(to: viewModel.reload)
 			.disposed(by: disposeBag)
+
+		viewModel.evetTypes
+			.observe(on: MainScheduler.instance)
+			.bind(to: collectionView.rx.items(cellIdentifier: eventTypeCellIdentifier, cellType: EventTypeCollectionViewCell.self)) { _, viewModel, cell in
+				cell.viewModel = viewModel
+			}.disposed(by: disposeBag)
 
 		viewModel.events
 			.observe(on: MainScheduler.instance)
@@ -113,4 +140,12 @@ extension EventsViewController: UITableViewDelegate {
 		return 160
 	}
 
+}
+
+// MARK: - CollectionView Flow Layout
+
+extension EventsViewController: UICollectionViewDelegateFlowLayout {
+	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+		return CGSize(width: 120.0, height: 40.0)
+	}
 }

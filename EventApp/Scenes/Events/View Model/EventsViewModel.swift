@@ -29,6 +29,8 @@ class EventsViewModel {
 
 	let title: Observable<String>
 
+	let evetTypes: Observable<[EventTypeViewModel]>
+
 	var events: Observable<[EventViewModel]>
 
 	let isLoading: Observable<Bool>
@@ -40,6 +42,9 @@ class EventsViewModel {
 
 		let _title = BehaviorSubject<String>(value: "Events")
 		self.title = _title.asObserver()
+
+		let _eventTypes = BehaviorSubject<[EventTypeViewModel]>(value: [])
+		self.evetTypes = _eventTypes.asObservable()
 
 		let _events = BehaviorSubject<[EventViewModel]>(value: [])
 		self.events = _events.asObservable()
@@ -55,6 +60,23 @@ class EventsViewModel {
 
 		let _alertMessage = PublishSubject<String>()
 		self.alertMessage = _alertMessage.asObservable()
+
+		_isLoading.onNext(true)
+		service.getEventTypes()
+			.subscribe { eventTypes in
+				_isLoading.onNext(false)
+				let eventTypesList = eventTypes.compactMap { EventTypeViewModel(eventType: $0)}
+				_eventTypes.onNext(eventTypesList)
+		} onError: { error in
+			guard let error = error as? APIError else { return }
+			switch error {
+			case .noInternet:
+				_isLoading.onNext(false)
+			default:
+				_isLoading.onNext(false)
+			}
+			_alertMessage.onNext(error.localizedDescription)
+		}.disposed(by: disposeBag)
 
 		_isLoading.onNext(true)
 		self.events = Observable.combineLatest(_reload, _currentEventType) { _, eventType in eventType }
