@@ -84,18 +84,8 @@ private extension EventsViewController {
 		viewModel.events
 			.observe(on: MainScheduler.instance)
 			.do(onNext: { [weak self] _ in self?.refreshControl.endRefreshing() })
-			.bind(to: tableView.rx.items(cellIdentifier: cellIdentifier, cellType: EventTableViewCell.self)) { [weak self] _, viewModel, cell in
-				guard let self = self else { return }
+			.bind(to: tableView.rx.items(cellIdentifier: cellIdentifier, cellType: EventTableViewCell.self)) { _, viewModel, cell in
 				cell.viewModel = viewModel
-				viewModel.isFavorited
-					.bind(to: cell.btnFavoriteEvent.rx.favorited)
-					.disposed(by: self.disposeBag)
-
-				cell.btnFavoriteEvent.rx.tap
-					.map { viewModel.id }
-					.subscribe(onNext: { id in
-						print("id is: \(id)")
-					}).disposed(by: self.disposeBag)
 			}.disposed(by: disposeBag)
 
 		viewModel.alertMessage

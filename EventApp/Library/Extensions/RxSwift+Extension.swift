@@ -15,7 +15,7 @@ extension Reactive where Base: UIButton {
 		let starFilledIcon = Images.starFilledIcon()?.withTintColor(Colors.gold()!)
 		let starUnfilledIcon = Images.starUnfilledIcon()?.withTintColor(Colors.gold()!)
 		return Binder(self.base) { button, valid in
-			button.imageView?.image = valid ? starFilledIcon : starUnfilledIcon
+			valid ? button.setImage(starFilledIcon, for: .normal) : button.setImage(starUnfilledIcon, for: .normal)
 		}
 	}
 }

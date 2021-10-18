@@ -12,7 +12,7 @@ import RxCocoa
 
 class EventDetailsViewModel {
 
-	private let event: EventViewModel
+	let event: EventViewModel
 	private let disposeBag = DisposeBag()
 
 	let id = BehaviorRelay<String>(value: "")
@@ -36,6 +36,5 @@ class EventDetailsViewModel {
 		event.isFavorited
 			.bind(to: isFavorited)
 			.disposed(by: disposeBag)
-
 	}
 }
