@@ -93,6 +93,16 @@ private extension EventDetailsViewController {
 			.bind(to: btnFavoriteEvent.rx.favorited)
 			.disposed(by: disposeBag)
 
+		viewModel.event.isAddedToFavorite
+			.bind(to: btnFavoriteEvent.rx.favorited)
+			.disposed(by: disposeBag)
+
+		btnFavoriteEvent.rx.tap
+			.subscribe(onNext: { [weak self] _ in
+				guard let self = self else { return }
+				self.viewModel.event.updateFavoriteStatus(event: self.viewModel.event)
+			}).disposed(by: disposeBag)
+
 		imgvEvent.setImage(imageURL: viewModel.image.value)
 
 		btnBack.rx.tap.subscribe { [weak self] _ in
