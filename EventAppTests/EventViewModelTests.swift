@@ -12,7 +12,7 @@ import XCTest
 class EventViewModelTests: XCTestCase {
 
 	var sut: EventViewModel?
-	
+
     override func setUpWithError() throws {
 		sut = EventViewModel()
 		sut?.realmService = RealmServiceMock.sharedMock
@@ -36,7 +36,7 @@ class EventViewModelTests: XCTestCase {
 		sut?.removeFromFavorite(event: sut!)
 		XCTAssert(RealmServiceMock.sharedMock.removeFromFavoriteCalled)
 	}
-	
+
 	func test_availableEvent_after_save() {
 		sut?.addToFavorite(event: sut!)
 		let availableEvent = sut?.isFavorited(event: sut!)
