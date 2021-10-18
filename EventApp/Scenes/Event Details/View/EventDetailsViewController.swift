@@ -93,10 +93,6 @@ private extension EventDetailsViewController {
 			.bind(to: btnFavoriteEvent.rx.favorited)
 			.disposed(by: disposeBag)
 
-		viewModel.event.isAddedToFavorite
-			.bind(to: btnFavoriteEvent.rx.favorited)
-			.disposed(by: disposeBag)
-
 		btnFavoriteEvent.rx.tap
 			.subscribe(onNext: { [weak self] _ in
 				guard let self = self else { return }

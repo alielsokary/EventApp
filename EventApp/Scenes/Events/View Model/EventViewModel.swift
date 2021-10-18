@@ -8,6 +8,7 @@
 
 import Foundation
 import RxSwift
+import RxCocoa
 import RealmSwift
 
 class EventViewModel: Object {
@@ -20,7 +21,7 @@ class EventViewModel: Object {
 	@Persisted var startDate: String?
 	@Persisted var endDate: String?
 
-	let isAddedToFavorite = PublishSubject<Bool>()
+	private let _isFavorited = BehaviorRelay<Bool>(value: false)
 
 	convenience init(event: Event) {
 		self.init()
@@ -41,7 +42,7 @@ class EventViewModel: Object {
 			} else {
 				addToFavorite(event: viewModel)
 			}
-		isAddedToFavorite.onNext(isFavorited(event: viewModel))
+		_isFavorited.accept(isFavorited(event: viewModel))
 	}
 
 	private func addToFavorite(event viewModel: EventViewModel) {
@@ -62,7 +63,7 @@ class EventViewModel: Object {
 	}
 
 	var isFavorited: Observable<Bool> {
-		return Observable.just(isFavorited(event: self))
+		_isFavorited.asObservable().map { _ in self.isFavorited(event: self) }
 	}
 
 }

@@ -63,10 +63,6 @@ extension EventTableViewCell {
 			.bind(to: btnFavoriteEvent.rx.favorited)
 			.disposed(by: disposeBag)
 
-		viewModel.isAddedToFavorite
-			.bind(to: btnFavoriteEvent.rx.favorited)
-			.disposed(by: disposeBag)
-
 		btnFavoriteEvent.rx.tap
 			.subscribe(onNext: { [weak self] _ in
 				guard let self = self else { return }
