@@ -23,6 +23,8 @@ class EventViewModel: Object {
 
 	private let _isFavorited = BehaviorRelay<Bool>(value: false)
 
+	var realmService: RealmService!
+
 	convenience init(event: Event) {
 		self.init()
 		self.id = event.id
@@ -33,6 +35,7 @@ class EventViewModel: Object {
 		self.endDate = event.endDate
 		self.latitude = event.latitude
 		self.longitude = event.longitude
+		self.realmService = RealmService.shared
 	}
 
 	func updateFavoriteStatus(event viewModel: EventViewModel) {
@@ -45,25 +48,27 @@ class EventViewModel: Object {
 		_isFavorited.accept(isFavorited(event: viewModel))
 	}
 
-	private func addToFavorite(event viewModel: EventViewModel) {
-		RealmService.shared.create(viewModel)
-	}
-
-	private func removeFromFavorite(event viewModel: EventViewModel) {
-		RealmService.shared.delete(viewModel)
-	}
-
-	private func isFavorited(event viewModel: EventViewModel) -> Bool {
-		return RealmService.shared.isAvailable(type: EventViewModel.self, key: viewModel.id ?? "")
-	}
-
-	private func favoritedEvent(event viewModel: EventViewModel) -> EventViewModel {
-		let favoritedEvent = RealmService.shared.getObject(type: EventViewModel.self, key: viewModel.id ?? "")!
-		return favoritedEvent
-	}
-
 	var isFavorited: Observable<Bool> {
 		_isFavorited.asObservable().map { _ in self.isFavorited(event: self) }
 	}
 
+}
+
+extension EventViewModel: StorageSession {
+	func addToFavorite(event viewModel: EventViewModel) {
+		realmService.create(viewModel)
+	}
+
+	func removeFromFavorite(event viewModel: EventViewModel) {
+		realmService.delete(viewModel)
+	}
+
+	func isFavorited(event viewModel: EventViewModel) -> Bool {
+		return realmService.isAvailable(type: EventViewModel.self, key: viewModel.id ?? "")
+	}
+
+	func favoritedEvent(event viewModel: EventViewModel) -> EventViewModel {
+		let favoritedEvent = realmService.getObject(type: EventViewModel.self, key: viewModel.id ?? "")!
+		return favoritedEvent
+	}
 }

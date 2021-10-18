@@ -17,7 +17,7 @@
 		411C2F242719D1C30008B7AB /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411C2F232719D1C30008B7AB /* SplashViewController.swift */; };
 		411C2F272719D1C30008B7AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 411C2F252719D1C30008B7AB /* Main.storyboard */; };
 		411C2F2C2719D1C90008B7AB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 411C2F2A2719D1C90008B7AB /* LaunchScreen.storyboard */; };
-		411C2F372719D1C90008B7AB /* EventAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411C2F362719D1C90008B7AB /* EventAppTests.swift */; };
+		411C2F372719D1C90008B7AB /* EventViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411C2F362719D1C90008B7AB /* EventViewModelTests.swift */; };
 		411C2F422719D1CA0008B7AB /* EventAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411C2F412719D1CA0008B7AB /* EventAppUITests.swift */; };
 		411C2F522719FAF10008B7AB /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411C2F512719FAF10008B7AB /* R.generated.swift */; };
 		411C2F572719FE2E0008B7AB /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411C2F562719FE2E0008B7AB /* Events.swift */; };
@@ -48,6 +48,8 @@
 		411C2F9F271B11220008B7AB /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 411C2F9C271B11220008B7AB /* Roboto-Medium.ttf */; };
 		411C2FA0271B11220008B7AB /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 411C2F9D271B11220008B7AB /* Roboto-Regular.ttf */; };
 		411C2FA3271B11C10008B7AB /* EALabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411C2FA2271B11C10008B7AB /* EALabel.swift */; };
+		41771970271DD70500F9B27B /* RealmServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4177196F271DD70500F9B27B /* RealmServiceTests.swift */; };
+		41771972271DF61000F9B27B /* StorageSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41771971271DF61000F9B27B /* StorageSession.swift */; };
 		41C6E062271C87AC000C6D1F /* LoadingIndicatorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C6E061271C87AC000C6D1F /* LoadingIndicatorType.swift */; };
 		41D661A5271CAD130004CEC4 /* RealmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D661A4271CAD130004CEC4 /* RealmService.swift */; };
 		5DBE40CDEBA05277580B1CD6 /* Pods_EventApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28454B46CF59C45365506ED6 /* Pods_EventApp.framework */; };
@@ -90,7 +92,7 @@
 		411C2F2B2719D1C90008B7AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		411C2F2D2719D1C90008B7AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		411C2F322719D1C90008B7AB /* EventAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EventAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		411C2F362719D1C90008B7AB /* EventAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventAppTests.swift; sourceTree = "<group>"; };
+		411C2F362719D1C90008B7AB /* EventViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewModelTests.swift; sourceTree = "<group>"; };
 		411C2F382719D1C90008B7AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		411C2F3D2719D1C90008B7AB /* EventAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EventAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		411C2F412719D1CA0008B7AB /* EventAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventAppUITests.swift; sourceTree = "<group>"; };
@@ -124,6 +126,8 @@
 		411C2F9C271B11220008B7AB /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		411C2F9D271B11220008B7AB /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		411C2FA2271B11C10008B7AB /* EALabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EALabel.swift; sourceTree = "<group>"; };
+		4177196F271DD70500F9B27B /* RealmServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmServiceTests.swift; sourceTree = "<group>"; };
+		41771971271DF61000F9B27B /* StorageSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageSession.swift; sourceTree = "<group>"; };
 		41C6E061271C87AC000C6D1F /* LoadingIndicatorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicatorType.swift; sourceTree = "<group>"; };
 		41D661A4271CAD130004CEC4 /* RealmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmService.swift; sourceTree = "<group>"; };
 		780328F13A5EBF402175D5AB /* Pods_EventAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EventAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -238,8 +242,9 @@
 		411C2F352719D1C90008B7AB /* EventAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				411C2F362719D1C90008B7AB /* EventAppTests.swift */,
+				411C2F362719D1C90008B7AB /* EventViewModelTests.swift */,
 				411C2F382719D1C90008B7AB /* Info.plist */,
+				4177196F271DD70500F9B27B /* RealmServiceTests.swift */,
 			);
 			path = EventAppTests;
 			sourceTree = "<group>";
@@ -438,6 +443,7 @@
 			isa = PBXGroup;
 			children = (
 				41D661A4271CAD130004CEC4 /* RealmService.swift */,
+				41771971271DF61000F9B27B /* StorageSession.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -768,6 +774,7 @@
 				411C2F61271A07410008B7AB /* APIError.swift in Sources */,
 				411C2F5F271A05400008B7AB /* EventtusRouter.swift in Sources */,
 				41C6E062271C87AC000C6D1F /* LoadingIndicatorType.swift in Sources */,
+				41771972271DF61000F9B27B /* StorageSession.swift in Sources */,
 				411C2F6B271A18DA0008B7AB /* Typealias.swift in Sources */,
 				411C2F63271A07F20008B7AB /* APIClient.swift in Sources */,
 				411C2F65271A09660008B7AB /* ServicePaths.swift in Sources */,
@@ -788,7 +795,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				411C2F372719D1C90008B7AB /* EventAppTests.swift in Sources */,
+				411C2F372719D1C90008B7AB /* EventViewModelTests.swift in Sources */,
+				41771970271DD70500F9B27B /* RealmServiceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

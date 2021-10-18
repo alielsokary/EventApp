@@ -11,7 +11,6 @@ import RealmSwift
 
 class RealmService {
 
-	private init() {}
 	static let shared = RealmService()
 
 	var realm = try? Realm()
