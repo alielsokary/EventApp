@@ -76,4 +76,5 @@ class EventsViewModel {
 				return events.compactMap { EventViewModel(event: $0) }
 			}
 	}
+
 }

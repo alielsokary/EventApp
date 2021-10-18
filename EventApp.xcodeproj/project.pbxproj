@@ -49,6 +49,7 @@
 		411C2FA0271B11220008B7AB /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 411C2F9D271B11220008B7AB /* Roboto-Regular.ttf */; };
 		411C2FA3271B11C10008B7AB /* EALabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411C2FA2271B11C10008B7AB /* EALabel.swift */; };
 		41C6E062271C87AC000C6D1F /* LoadingIndicatorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C6E061271C87AC000C6D1F /* LoadingIndicatorType.swift */; };
+		41D661A5271CAD130004CEC4 /* RealmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D661A4271CAD130004CEC4 /* RealmService.swift */; };
 		5DBE40CDEBA05277580B1CD6 /* Pods_EventApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28454B46CF59C45365506ED6 /* Pods_EventApp.framework */; };
 		B0D8AC67537339BC35933FB2 /* Pods_EventAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 780328F13A5EBF402175D5AB /* Pods_EventAppTests.framework */; };
 		CD8E6EA5E00FCF9789FF31E4 /* Pods_EventApp_EventAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20C304AAECD6F3DBEF234859 /* Pods_EventApp_EventAppUITests.framework */; };
@@ -124,6 +125,7 @@
 		411C2F9D271B11220008B7AB /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		411C2FA2271B11C10008B7AB /* EALabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EALabel.swift; sourceTree = "<group>"; };
 		41C6E061271C87AC000C6D1F /* LoadingIndicatorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicatorType.swift; sourceTree = "<group>"; };
+		41D661A4271CAD130004CEC4 /* RealmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmService.swift; sourceTree = "<group>"; };
 		780328F13A5EBF402175D5AB /* Pods_EventAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EventAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8294D671CB9B0A0C4EB1D7CD /* Pods-EventAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EventAppTests.release.xcconfig"; path = "Target Support Files/Pods-EventAppTests/Pods-EventAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		9CEC2BA56F12E542801B0050 /* Pods-EventAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EventAppTests.debug.xcconfig"; path = "Target Support Files/Pods-EventAppTests/Pods-EventAppTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -263,6 +265,7 @@
 		411C2F58271A030B0008B7AB /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				41D661A3271CACEF0004CEC4 /* Storage */,
 				411C2F59271A03130008B7AB /* Networking */,
 			);
 			path = Services;
@@ -287,9 +290,9 @@
 				411C2F9A271B11060008B7AB /* Fonts */,
 				411C2F95271B0B850008B7AB /* Styling */,
 				411C2F8C271A63580008B7AB /* Extensions */,
-				411C2F67271A17D10008B7AB /* BaseCoordinator.swift */,
 				411C2F6A271A18DA0008B7AB /* Typealias.swift */,
 				41C6E061271C87AC000C6D1F /* LoadingIndicatorType.swift */,
+				411C2F67271A17D10008B7AB /* BaseCoordinator.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -429,6 +432,14 @@
 				411C2FA2271B11C10008B7AB /* EALabel.swift */,
 			);
 			path = "Custom Component";
+			sourceTree = "<group>";
+		};
+		41D661A3271CACEF0004CEC4 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				41D661A4271CAD130004CEC4 /* RealmService.swift */,
+			);
+			path = Storage;
 			sourceTree = "<group>";
 		};
 		79DA58AC6A23ECC29B21F4AC /* Frameworks */ = {
@@ -738,6 +749,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				411C2F7D271A267B0008B7AB /* EventsCoordinator.swift in Sources */,
+				41D661A5271CAD130004CEC4 /* RealmService.swift in Sources */,
 				41127129271B31C6002F72E0 /* EventDetailsCoordinator.swift in Sources */,
 				411C2F83271A3CE00008B7AB /* EventsTableViewCell.swift in Sources */,
 				411C2F5B271A03390008B7AB /* URLRequestBuilder.swift in Sources */,
