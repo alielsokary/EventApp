@@ -10,21 +10,28 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+/// Shows a list of  events and event types.
 class EventsViewController: UIViewController {
+
+	// MARK: - Outlets
 
 	@IBOutlet weak var tableView: UITableView!
 	@IBOutlet weak var collectionView: UICollectionView!
 
-	private let refreshControl = UIRefreshControl()
+	// MARK: - Properties
 
 	private let viewModel: EventsViewModel!
 	private let disposeBag = DisposeBag()
 
-	private let nib = Nib.eventTableViewCell
-	private let cellIdentifier = ReuseIdentifier.eventTableViewCell.identifier
+	private let refreshControl = UIRefreshControl()
 
 	private let eventTypeNib = Nib.eventTypeCollectionViewCell
-	private let eventTypeCellIdentifier = ReuseIdentifier.eventTypeCollectionViewCell.identifier
+	private let idEventTypeCell = ReuseIdentifier.eventTypeCollectionViewCell.identifier
+
+	private let nib = Nib.eventTableViewCell
+	private let idEventCell = ReuseIdentifier.eventTableViewCell.identifier
+
+	// MARK: - Initializer
 
 	required init?(coder: NSCoder, viewModel: EventsViewModel) {
 		self.viewModel = viewModel
@@ -35,6 +42,8 @@ class EventsViewController: UIViewController {
 		fatalError("init(coder:) has not been implemented")
 	}
 
+	// MARK: - Life Cycle
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		setupUI()
@@ -42,7 +51,6 @@ class EventsViewController: UIViewController {
 		configureCollectionView()
 		setupBindings()
 		selectionBindings()
-		refreshControl.sendActions(for: .valueChanged)
 	}
 
 }
@@ -104,14 +112,14 @@ private extension EventsViewController {
 
 		viewModel.evetTypes
 			.observe(on: MainScheduler.instance)
-			.bind(to: collectionView.rx.items(cellIdentifier: eventTypeCellIdentifier, cellType: EventTypeCollectionViewCell.self)) { _, viewModel, cell in
+			.bind(to: collectionView.rx.items(cellIdentifier: idEventTypeCell, cellType: EventTypeCollectionViewCell.self)) { _, viewModel, cell in
 				cell.viewModel = viewModel
 			}.disposed(by: disposeBag)
 
 		viewModel.events
 			.observe(on: MainScheduler.instance)
 			.do(onNext: { [weak self] _ in self?.refreshControl.endRefreshing() })
-			.bind(to: tableView.rx.items(cellIdentifier: cellIdentifier, cellType: EventTableViewCell.self)) { _, viewModel, cell in
+			.bind(to: tableView.rx.items(cellIdentifier: idEventCell, cellType: EventTableViewCell.self)) { _, viewModel, cell in
 				cell.viewModel = viewModel
 			}.disposed(by: disposeBag)
 
@@ -126,6 +134,10 @@ private extension EventsViewController {
 	}
 
 	func selectionBindings() {
+		collectionView.rx.modelSelected(EventTypeViewModel.self)
+			.bind(to: viewModel.selectedEventType)
+			.disposed(by: disposeBag)
+
 		tableView.rx.modelSelected(EventViewModel.self)
 			.bind(to: viewModel.selectedEvent)
 			.disposed(by: disposeBag)
