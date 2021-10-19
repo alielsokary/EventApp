@@ -20,61 +20,134 @@ class EventsViewModel {
 	/// Call to reload Events.
 	let reload: AnyObserver<Void>
 
-	/// Call to update current Event Type. Causes reload of the Events.
-	let setEventType: AnyObserver<String>
+	/// Event type property to be passed as a parameter in getEvents request.
+	private let eventType = BehaviorRelay<String>(value: "")
 
+	/// Call to update current selected event type. Causes reload of the Events.
+	let selectedEventType = PublishSubject<EventTypeViewModel>()
+
+	/// Selected event to be passed in coordinator to navigate to event details
 	let selectedEvent = PublishSubject<EventViewModel>()
+
+	private let _title = BehaviorSubject<String>(value: "Events")
+	private let _events = BehaviorSubject<[EventViewModel]>(value: [])
+	private let _eventTypes = BehaviorSubject<[EventTypeViewModel]>(value: [])
+
+	private let _reload = PublishSubject<Void>()
+	private let _isLoading = BehaviorSubject<Bool>(value: false)
+	private let _alertMessage = PublishSubject<String>()
+
+	/// Alert in case pull to refresh action was made before an event type was selected.
+	/// I choose this solution rather than assigning a default parameter of 'Sports' (the first event type)
+	private let emptyCategoryAlert = "Please select event type first."
 
 	// MARK: - Outputs
 
+	/// Emits a  title for navigation item title.
 	let title: Observable<String>
 
-	var events: Observable<[EventViewModel]>
+	/// Emits an array of fetched event types.
+	let evetTypes: Observable<[EventTypeViewModel]>
 
+	/// Emits an array of fetched events.
+	let events: Observable<[EventViewModel]>
+
+	/// Emits a boolean to decide when to show/hide activity indicator.
 	let isLoading: Observable<Bool>
 
+	/// Emits message or an error messages to be shown.
 	let alertMessage: Observable<String>
 
-	init(service: EventsService, currentEventType: String = "Music") {
+	init(service: EventsService) {
 		self.service = service
 
-		let _title = BehaviorSubject<String>(value: "Events")
 		self.title = _title.asObserver()
 
-		let _events = BehaviorSubject<[EventViewModel]>(value: [])
+		self.evetTypes = _eventTypes.asObservable()
 		self.events = _events.asObservable()
 
-		let _reload = PublishSubject<Void>()
 		self.reload = _reload.asObserver()
-
-		let _isLoading = BehaviorSubject<Bool>(value: false)
 		self.isLoading = _isLoading.asObserver()
-
-		let _currentEventType = BehaviorSubject<String>(value: currentEventType)
-		self.setEventType = _currentEventType.asObserver()
-
-		let _alertMessage = PublishSubject<String>()
 		self.alertMessage = _alertMessage.asObservable()
 
-		_isLoading.onNext(true)
-		self.events = Observable.combineLatest(_reload, _currentEventType) { _, eventType in eventType }
-			.flatMapLatest { eventType in
-				service.getEvents(type: eventType, page: 1).catch { error in
-					_isLoading.onNext(false)
-					guard let error = error as? APIError else { return Observable.empty() }
-					switch error {
-					case .noInternet:
-						_isLoading.onNext(false)
-					default:
-						_isLoading.onNext(false)
-					}
-					_alertMessage.onNext(error.localizedDescription)
-					return Observable.empty()
-				}
-			}.map { events in
-				_isLoading.onNext(false)
-				return events.compactMap { EventViewModel(event: $0) }
-			}
+		getEventTypes()
+
+		selectedEventType.subscribe { [weak self] eventType in
+			guard let self = self else { return }
+			guard let eventType = eventType.element?.name else { return }
+			self.eventType.accept(eventType)
+			self.getEvents()
+		}.disposed(by: disposeBag)
+
+		_reload.subscribe { [weak self] _ in
+			guard let self = self else { return }
+			guard !self.emptyEventType() else { return }
+			self.getEvents()
+
+		}.disposed(by: disposeBag)
 	}
 
+}
+
+// MARK: - Vaildations
+
+private extension EventsViewModel {
+
+/// Validate if event type was selected or not.
+	func emptyEventType() -> Bool {
+		let emptyEventType = self.eventType.value.isEmpty
+		if emptyEventType {
+			self._alertMessage.onNext(self.emptyCategoryAlert)
+			self._events.onNext([])
+			return true
+		}
+		return false
+	}
+}
+
+// MARK: - Service Calls
+
+private extension EventsViewModel {
+
+	func getEventTypes() {
+		_isLoading.onNext(true)
+		service.getEventTypes()
+			.subscribe { [weak self] eventTypes in
+				guard let self = self else { return }
+				self._isLoading.onNext(false)
+				let eventTypeList = eventTypes.compactMap { EventTypeViewModel(eventType: $0)}
+				self._eventTypes.onNext(eventTypeList)
+		} onError: { error in
+			guard let error = error as? APIError else { return }
+			switch error {
+			case .noInternet:
+				self._isLoading.onNext(false)
+				self._eventTypes.onNext([])
+			default:
+				self._isLoading.onNext(false)
+			}
+			self._alertMessage.onNext(error.localizedDescription)
+		}.disposed(by: disposeBag)
+	}
+
+	func getEvents() {
+		_isLoading.onNext(true)
+		service.getEvents(type: self.eventType.value, page: 1)
+			.subscribe { [weak self] eventTypes in
+				guard let self = self else { return }
+				self._isLoading.onNext(false)
+				let eventList = eventTypes.compactMap { EventViewModel(event: $0)}
+				self._events.onNext(eventList)
+		} onError: { error in
+			guard let error = error as? APIError else { return }
+			switch error {
+			case .noInternet:
+				self._isLoading.onNext(false)
+				self._events.onNext([])
+			default:
+				self._isLoading.onNext(false)
+			}
+			self._alertMessage.onNext(error.localizedDescription)
+		}.disposed(by: disposeBag)
+	}
 }

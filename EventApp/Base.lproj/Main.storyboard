@@ -49,26 +49,44 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Nzc-l6-G2S">
-                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                                <rect key="frame" x="0.0" y="94" width="414" height="802"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="TpI-hA-r0a">
+                                <rect key="frame" x="0.0" y="44" width="414" height="50"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="oiX-hb-dPH"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="9TZ-aZ-QYd">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="lVo-j5-9D2"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="TpI-hA-r0a" firstAttribute="top" secondItem="lVo-j5-9D2" secondAttribute="top" id="3JU-sT-j9t"/>
                             <constraint firstAttribute="bottom" secondItem="Nzc-l6-G2S" secondAttribute="bottom" id="5gu-wR-4E5"/>
-                            <constraint firstItem="Nzc-l6-G2S" firstAttribute="top" secondItem="lVo-j5-9D2" secondAttribute="top" id="7JQ-kP-bBW"/>
+                            <constraint firstItem="Nzc-l6-G2S" firstAttribute="top" secondItem="TpI-hA-r0a" secondAttribute="bottom" id="HEK-jk-kMf"/>
                             <constraint firstItem="lVo-j5-9D2" firstAttribute="trailing" secondItem="Nzc-l6-G2S" secondAttribute="trailing" id="I3x-Zz-zyw"/>
                             <constraint firstItem="Nzc-l6-G2S" firstAttribute="leading" secondItem="lVo-j5-9D2" secondAttribute="leading" id="ZEN-j5-097"/>
+                            <constraint firstItem="TpI-hA-r0a" firstAttribute="leading" secondItem="lVo-j5-9D2" secondAttribute="leading" id="f2X-hf-vhg"/>
+                            <constraint firstItem="TpI-hA-r0a" firstAttribute="trailing" secondItem="lVo-j5-9D2" secondAttribute="trailing" id="l0E-JG-3RD"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="collectionView" destination="TpI-hA-r0a" id="qnc-AC-hKN"/>
                         <outlet property="tableView" destination="Nzc-l6-G2S" id="u3D-oE-mkR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="44A-zl-4Ee" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="954" y="100"/>
+            <point key="canvasLocation" x="953.62318840579712" y="99.776785714285708"/>
         </scene>
         <!--Event Details View Controller-->
         <scene sceneID="evP-6q-KM2">
