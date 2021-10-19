@@ -24,6 +24,12 @@ class EventTypeCollectionViewCell: UICollectionViewCell {
 		}
 	}
 
+	override var isSelected: Bool {
+		didSet {
+			lblEventType.textColor = isSelected ? Colors.primary() : Colors.titles()
+		}
+	}
+
 }
 
 // MARK: - SetupUI
