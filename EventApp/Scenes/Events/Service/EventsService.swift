@@ -9,11 +9,16 @@
 import RxSwift
 
 protocol EventsService {
+	func getEventTypes() -> Observable<EventTypes>
 	func getEvents(type: String, page: Int) -> Observable<Events>
 }
 
 class EventsServiceImpl: APIClient, EventsService {
+	func getEventTypes() -> Observable<EventTypes> {
+		request(EventtusRouter.geEventTypes)
+	}
+
 	func getEvents(type: String, page: Int) -> Observable<Events> {
-		return request(EventtusRouter.getEvents(type: type, page: page))
+		request(EventtusRouter.getEvents(type: type, page: page))
 	}
 }
