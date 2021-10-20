@@ -110,7 +110,7 @@ private extension EventsViewController {
 			.bind(to: viewModel.reload)
 			.disposed(by: disposeBag)
 
-		viewModel.evetTypes
+		viewModel.eventTypes
 			.observe(on: MainScheduler.instance)
 			.bind(to: collectionView.rx.items(cellIdentifier: idEventTypeCell, cellType: EventTypeCollectionViewCell.self)) { _, viewModel, cell in
 				cell.viewModel = viewModel

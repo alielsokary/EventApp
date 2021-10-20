@@ -22,11 +22,13 @@ class EventViewModelTests: XCTestCase {
 					  endDate: "Saturday, December 3, 2016 8:50 AM")
 
     override func setUpWithError() throws {
+		super.setUp()
 		sut = EventViewModel(event: event)
 		sut?.realmService = RealmServiceMock.sharedMock
     }
 
     override func tearDownWithError() throws {
+		super.tearDown()
         sut = nil
     }
 

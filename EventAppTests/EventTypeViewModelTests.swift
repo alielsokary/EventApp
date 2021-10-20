@@ -16,10 +16,12 @@ class EventTypeViewModelTests: XCTestCase {
 	var sut: EventTypeViewModel!
 
     override func setUpWithError() throws {
+		super.setUp()
         sut = EventTypeViewModel(eventType: eventType)
     }
 
     override func tearDownWithError() throws {
+		super.tearDown()
         sut = nil
     }
 

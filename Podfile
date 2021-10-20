@@ -21,11 +21,7 @@ target 'EventApp' do
 
   target 'EventAppTests' do
     inherit! :search_paths
-    # Pods for testing
-  end
-
-  target 'EventAppUITests' do
-    # Pods for testing
+		pod 'RxTest', '6.2.0'
   end
 
 end
