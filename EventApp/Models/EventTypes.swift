@@ -12,5 +12,5 @@ typealias EventTypes = [EventType]
 
 // MARK: - EventType
 struct EventType: Codable {
-	let name, id: String?
+	let id, name: String?
 }
