@@ -84,15 +84,14 @@ class EventsViewModel {
 			guard let self = self else { return }
 			guard let eventType = eventType.element?.name else { return }
 			self.eventType.accept(eventType)
-			self.getEvents(isRefreshControl: true)
+			self.resetEventList()
+			self.getEvents(page: self.page, isRefreshControl: true)
 		}.disposed(by: disposeBag)
 
 		_reload.subscribe { [weak self] _ in
 			guard let self = self else { return }
 			guard !self.emptyEventType() else { return }
-			self.isPaginationRequestActive = false
-			self.page = 1
-			self._events.accept([])
+			self.resetEventList()
 			self.getEvents(page: self.page, isRefreshControl: true)
 		}.disposed(by: disposeBag)
 
@@ -101,6 +100,12 @@ class EventsViewModel {
 			self.getEvents(page: self.page, isRefreshControl: false)
 		}.disposed(by: disposeBag)
 
+	}
+
+	func resetEventList() {
+		self.isPaginationRequestActive = false
+		self.page = 1
+		self._events.accept([])
 	}
 
 }

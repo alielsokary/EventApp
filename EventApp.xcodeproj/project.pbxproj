@@ -321,8 +321,8 @@
 		411C2F6E271A1EE10008B7AB /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				41771979271E356F00F9B27B /* Event Types */,
 				411C2F6F271A1EED0008B7AB /* Splash */,
+				41771979271E356F00F9B27B /* Event Types */,
 				411C2F73271A259C0008B7AB /* Events */,
 				41127122271B2D37002F72E0 /* Event Details */,
 			);
