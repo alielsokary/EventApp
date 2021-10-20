@@ -131,6 +131,16 @@ private extension EventsViewController {
 			.subscribe { [weak self] isLoading in
 				isLoading ? self?.startLoading() : self?.endLoading()
 			}.disposed(by: disposeBag)
+
+		tableView.rx.didScroll.subscribe { [weak self] _ in
+			guard let self = self else { return }
+			let offSetY = self.tableView.contentOffset.y
+			let contentHeight = self.tableView.contentSize.height
+
+			if offSetY > (contentHeight - self.tableView.frame.size.height - 100) {
+				self.viewModel.fetchPaginatedData.onNext(())
+			}
+		}.disposed(by: disposeBag)
 	}
 
 	func selectionBindings() {
