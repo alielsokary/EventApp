@@ -11,12 +11,12 @@ import UIKit
 extension UIImageView {
 	func setImage(imageURL: String) {
 		guard let url = URL(string: imageURL) else { return }
-		
+
 		let activityIndicator = UIActivityIndicatorView(style: .medium)
 		activityIndicator.center = center
 		addSubview(activityIndicator)
 		activityIndicator.startAnimating()
-		
+
 		DispatchQueue.global().async {
 			guard let data = try? Data(contentsOf: url) else {
 				DispatchQueue.main.async {
