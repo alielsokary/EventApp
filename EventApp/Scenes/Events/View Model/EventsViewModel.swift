@@ -23,23 +23,31 @@ class EventsViewModel {
 	/// Event type property to be passed as a parameter in getEvents request.
 	private let eventType = BehaviorRelay<String>(value: "")
 
-	/// Call to update current selected event type. Causes reload of the Events.
+	/// Call to update current selected event type. Causes reload of the events.
 	let selectedEventType = PublishSubject<EventTypeViewModel>()
+
+	/// Call to fetch paginated events.
+	let fetchPaginatedData = PublishSubject<Void>()
 
 	/// Selected event to be passed in coordinator to navigate to event details
 	let selectedEvent = PublishSubject<EventViewModel>()
 
+	/// Alert in case pull to refresh action was made before an event type was selected.
+	/// I choose this solution rather than assigning a default parameter of 'Sports' (the first event type)
+	private let emptyCategoryAlert = "Please select event type first."
+
 	private let _title = BehaviorSubject<String>(value: "Events")
-	private let _events = BehaviorSubject<[EventViewModel]>(value: [])
+	private let _events = BehaviorRelay<[EventViewModel]>(value: [])
 	private let _eventTypes = BehaviorSubject<[EventTypeViewModel]>(value: [])
 
 	private let _reload = PublishSubject<Void>()
 	private let _isLoading = BehaviorSubject<Bool>(value: false)
 	private let _alertMessage = PublishSubject<String>()
 
-	/// Alert in case pull to refresh action was made before an event type was selected.
-	/// I choose this solution rather than assigning a default parameter of 'Sports' (the first event type)
-	private let emptyCategoryAlert = "Please select event type first."
+	private var page = 1
+	private var maxPage = 3
+	private var isRefreshRequstActive = false
+	private var isPaginationRequestActive = false
 
 	// MARK: - Outputs
 
@@ -76,15 +84,23 @@ class EventsViewModel {
 			guard let self = self else { return }
 			guard let eventType = eventType.element?.name else { return }
 			self.eventType.accept(eventType)
-			self.getEvents()
+			self.getEvents(isRefreshControl: true)
 		}.disposed(by: disposeBag)
 
 		_reload.subscribe { [weak self] _ in
 			guard let self = self else { return }
 			guard !self.emptyEventType() else { return }
-			self.getEvents()
-
+			self.isPaginationRequestActive = false
+			self.page = 1
+			self._events.accept([])
+			self.getEvents(page: self.page, isRefreshControl: true)
 		}.disposed(by: disposeBag)
+
+		fetchPaginatedData.subscribe { [weak self] _ in
+			guard let self = self else { return }
+			self.getEvents(page: self.page, isRefreshControl: false)
+		}.disposed(by: disposeBag)
+
 	}
 
 }
@@ -93,12 +109,12 @@ class EventsViewModel {
 
 private extension EventsViewModel {
 
-/// Validate if event type was selected or not.
+/// Validate if `event type` was selected or not.
 	func emptyEventType() -> Bool {
 		let emptyEventType = self.eventType.value.isEmpty
 		if emptyEventType {
 			self._alertMessage.onNext(self.emptyCategoryAlert)
-			self._events.onNext([])
+			self._events.accept([])
 			return true
 		}
 		return false
@@ -130,20 +146,39 @@ private extension EventsViewModel {
 		}.disposed(by: disposeBag)
 	}
 
-	func getEvents() {
+	func getEvents(page: Int = 1, isRefreshControl: Bool) {
+		if isPaginationRequestActive || isRefreshRequstActive { return }
+		self.isRefreshRequstActive = isRefreshControl
+
+		if self.page > maxPage {
+			isPaginationRequestActive = false
+			return
+		}
+
+		isPaginationRequestActive = true
+
 		_isLoading.onNext(true)
-		service.getEvents(type: self.eventType.value, page: 1)
+		service.getEvents(type: self.eventType.value, page: self.page)
 			.subscribe { [weak self] eventTypes in
 				guard let self = self else { return }
 				self._isLoading.onNext(false)
+				self.isPaginationRequestActive = false
+				self.isRefreshRequstActive = false
 				let eventList = eventTypes.compactMap { EventViewModel(event: $0)}
-				self._events.onNext(eventList)
+				if self.page == 1 {
+					self._events.accept(eventList)
+				} else {
+					let previousData = self._events.value
+					self._events.accept(previousData + eventList)
+				}
+				self.page += 1
+
 		} onError: { error in
 			guard let error = error as? APIError else { return }
 			switch error {
 			case .noInternet:
 				self._isLoading.onNext(false)
-				self._events.onNext([])
+				self._events.accept([])
 			default:
 				self._isLoading.onNext(false)
 			}
