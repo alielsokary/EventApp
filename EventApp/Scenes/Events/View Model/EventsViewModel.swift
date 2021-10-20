@@ -55,7 +55,7 @@ class EventsViewModel {
 	let title: Observable<String>
 
 	/// Emits an array of fetched event types.
-	let evetTypes: Observable<[EventTypeViewModel]>
+	let eventTypes: Observable<[EventTypeViewModel]>
 
 	/// Emits an array of fetched events.
 	let events: Observable<[EventViewModel]>
@@ -71,7 +71,7 @@ class EventsViewModel {
 
 		self.title = _title.asObserver()
 
-		self.evetTypes = _eventTypes.asObservable()
+		self.eventTypes = _eventTypes.asObservable()
 		self.events = _events.asObservable()
 
 		self.reload = _reload.asObserver()

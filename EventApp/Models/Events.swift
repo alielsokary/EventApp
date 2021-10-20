@@ -12,10 +12,10 @@ typealias Events = [Event]
 
 // MARK: - Event
 struct Event: Codable {
-	let longitude, latitude, endDate, startDate: String?
-	let eventDescription: String?
+	let id, name: String?
 	let cover: String?
-	let name, id: String?
+	let eventDescription: String?
+	let longitude, latitude, startDate, endDate: String?
 
 	enum CodingKeys: String, CodingKey {
 		case longitude, latitude
