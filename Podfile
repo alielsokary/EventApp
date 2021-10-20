@@ -9,8 +9,6 @@ target 'EventApp' do
   
 	pod 'Alamofire', '5.4.1'
 	pod 'AlamofireNetworkActivityLogger', '3.4.0', :configurations => ['Debug']
-
-	pod 'Kingfisher', '~> 6.0'
   
 	pod 'RxSwift', '6.2.0'
 	pod 'RxCocoa', '6.2.0'

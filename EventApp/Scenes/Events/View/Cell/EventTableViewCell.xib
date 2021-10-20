@@ -21,7 +21,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fTZ-af-rhG">
                         <rect key="frame" x="8" y="8" width="438" height="150"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="EventApp-icon" translatesAutoresizingMaskIntoConstraints="NO" id="2hc-qn-cgv">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder-icon" translatesAutoresizingMaskIntoConstraints="NO" id="2hc-qn-cgv">
                                 <rect key="frame" x="8" y="20" width="110" height="110"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="110" id="4i6-xM-hNB"/>
@@ -124,9 +124,9 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="EventApp-icon" width="256.5" height="256.5"/>
         <image name="arrow-right-icon" width="25" height="25"/>
         <image name="calendar-icon" width="32" height="32"/>
+        <image name="placeholder-icon" width="513" height="513"/>
         <image name="star-unfilled-icon" width="32" height="32"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
