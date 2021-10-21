@@ -10,25 +10,28 @@ import XCTest
 import RealmSwift
 @testable import EventApp
 
-class RealmServiceMock: RealmService {
-
-	static let sharedMock = RealmServiceMock()
+class RealmServiceMock: StorageService {
 
 	var addToFavoriteCalled = false
 	var fetchFavoriteObjectCalled = false
+	var isFavoriteCalled = false
 	var removeFromFavoriteCalled = false
 
-	override func create<T>(_ object: T) where T: Object {
+	func addToFavorite(event viewModel: EventViewModel) {
 		addToFavoriteCalled = true
 	}
 
-	override func getObject<T>(type: T.Type, key: String) -> T? where T: Object {
+	func favoritedEvent(event viewModel: EventViewModel) -> EventViewModel {
 		fetchFavoriteObjectCalled = true
-		return T.init()
+		return EventViewModel()
 	}
 
-	override func delete<T>(_ object: T) where T: Object {
+	func isFavorited(event viewModel: EventViewModel) -> Bool {
+		isFavoriteCalled = true
+		return true
+	}
+
+	func removeFromFavorite(event viewModel: EventViewModel) {
 		removeFromFavoriteCalled = true
 	}
-
 }

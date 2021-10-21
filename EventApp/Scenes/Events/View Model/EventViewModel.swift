@@ -23,10 +23,11 @@ class EventViewModel: Object {
 
 	private let _isFavorited = BehaviorRelay<Bool>(value: false)
 
-	var realmService: RealmService!
+	var storageService: StorageService!
 
-	convenience init(event: Event) {
+	convenience init(event: Event, storageService: StorageService = StorageServiceImpl()) {
 		self.init()
+		self.storageService = storageService
 		self.id = event.id
 		self.name = event.name
 		self.cover = event.cover
@@ -35,40 +36,20 @@ class EventViewModel: Object {
 		self.endDate = event.endDate
 		self.latitude = event.latitude
 		self.longitude = event.longitude
-		self.realmService = RealmService.shared
 	}
 
 	func updateFavoriteStatus(event viewModel: EventViewModel) {
-			if isFavorited(event: viewModel) {
-				let favoritedEvent = favoritedEvent(event: viewModel)
-				removeFromFavorite(event: favoritedEvent)
+		if storageService.isFavorited(event: viewModel) {
+			let favoritedEvent = storageService.favoritedEvent(event: viewModel)
+			storageService.removeFromFavorite(event: favoritedEvent)
 			} else {
-				addToFavorite(event: viewModel)
+				storageService.addToFavorite(event: viewModel)
 			}
-		_isFavorited.accept(isFavorited(event: viewModel))
+		_isFavorited.accept(storageService.isFavorited(event: viewModel))
 	}
 
 	var isFavorited: Observable<Bool> {
-		_isFavorited.asObservable().map { _ in self.isFavorited(event: self) }
+		_isFavorited.asObservable().map { _ in self.storageService.isFavorited(event: self) }
 	}
 
-}
-
-extension EventViewModel: StorageSession {
-	func addToFavorite(event viewModel: EventViewModel) {
-		realmService.create(viewModel)
-	}
-
-	func removeFromFavorite(event viewModel: EventViewModel) {
-		realmService.delete(viewModel)
-	}
-
-	func isFavorited(event viewModel: EventViewModel) -> Bool {
-		return realmService.isAvailable(type: EventViewModel.self, key: viewModel.id ?? "")
-	}
-
-	func favoritedEvent(event viewModel: EventViewModel) -> EventViewModel {
-		let favoritedEvent = realmService.getObject(type: EventViewModel.self, key: viewModel.id ?? "")!
-		return favoritedEvent
-	}
 }

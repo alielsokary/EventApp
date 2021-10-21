@@ -51,13 +51,13 @@
 		4144E83A272075AC00A6BF01 /* EventsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4144E839272075AC00A6BF01 /* EventsViewModelTests.swift */; };
 		4144E83C27207A4400A6BF01 /* EventsServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4144E83B27207A4400A6BF01 /* EventsServiceMock.swift */; };
 		41771970271DD70500F9B27B /* RealmServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4177196F271DD70500F9B27B /* RealmServiceMock.swift */; };
-		41771972271DF61000F9B27B /* StorageSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41771971271DF61000F9B27B /* StorageSession.swift */; };
+		41771972271DF61000F9B27B /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41771971271DF61000F9B27B /* StorageService.swift */; };
 		41771978271E25A200F9B27B /* EventDetailsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41771977271E25A200F9B27B /* EventDetailsCoordinator.swift */; };
 		4177197C271E362700F9B27B /* EventTypeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4177197A271E362700F9B27B /* EventTypeCollectionViewCell.swift */; };
 		4177197D271E362700F9B27B /* EventTypeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4177197B271E362700F9B27B /* EventTypeCollectionViewCell.xib */; };
 		41771981271E384400F9B27B /* EventTypeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41771980271E384400F9B27B /* EventTypeViewModel.swift */; };
 		41C6E062271C87AC000C6D1F /* LoadingIndicatorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C6E061271C87AC000C6D1F /* LoadingIndicatorType.swift */; };
-		41D661A5271CAD130004CEC4 /* RealmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D661A4271CAD130004CEC4 /* RealmService.swift */; };
+		41D661A5271CAD130004CEC4 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D661A4271CAD130004CEC4 /* StorageManager.swift */; };
 		6DBE9CB85BBA62378709A050 /* Pods_EventAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6141DF2F8A425C9A14C77E28 /* Pods_EventAppTests.framework */; };
 		BDBCF6DCEB7ED4C3AA64F363 /* Pods_EventApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D978FB3E62357B0A1F7BC735 /* Pods_EventApp.framework */; };
 /* End PBXBuildFile section */
@@ -125,13 +125,13 @@
 		4144E839272075AC00A6BF01 /* EventsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewModelTests.swift; sourceTree = "<group>"; };
 		4144E83B27207A4400A6BF01 /* EventsServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsServiceMock.swift; sourceTree = "<group>"; };
 		4177196F271DD70500F9B27B /* RealmServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmServiceMock.swift; sourceTree = "<group>"; };
-		41771971271DF61000F9B27B /* StorageSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageSession.swift; sourceTree = "<group>"; };
+		41771971271DF61000F9B27B /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
 		41771977271E25A200F9B27B /* EventDetailsCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailsCoordinator.swift; sourceTree = "<group>"; };
 		4177197A271E362700F9B27B /* EventTypeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTypeCollectionViewCell.swift; sourceTree = "<group>"; };
 		4177197B271E362700F9B27B /* EventTypeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventTypeCollectionViewCell.xib; sourceTree = "<group>"; };
 		41771980271E384400F9B27B /* EventTypeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTypeViewModel.swift; sourceTree = "<group>"; };
 		41C6E061271C87AC000C6D1F /* LoadingIndicatorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicatorType.swift; sourceTree = "<group>"; };
-		41D661A4271CAD130004CEC4 /* RealmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmService.swift; sourceTree = "<group>"; };
+		41D661A4271CAD130004CEC4 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		6141DF2F8A425C9A14C77E28 /* Pods_EventAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EventAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		68C625CF1DA5CC4411B96A29 /* Pods-EventApp-EventAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EventApp-EventAppTests.release.xcconfig"; path = "Target Support Files/Pods-EventApp-EventAppTests/Pods-EventApp-EventAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		D978FB3E62357B0A1F7BC735 /* Pods_EventApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EventApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -463,8 +463,8 @@
 		41D661A3271CACEF0004CEC4 /* Storage */ = {
 			isa = PBXGroup;
 			children = (
-				41D661A4271CAD130004CEC4 /* RealmService.swift */,
-				41771971271DF61000F9B27B /* StorageSession.swift */,
+				41D661A4271CAD130004CEC4 /* StorageManager.swift */,
+				41771971271DF61000F9B27B /* StorageService.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -723,7 +723,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				411C2F7D271A267B0008B7AB /* EventsCoordinator.swift in Sources */,
-				41D661A5271CAD130004CEC4 /* RealmService.swift in Sources */,
+				41D661A5271CAD130004CEC4 /* StorageManager.swift in Sources */,
 				411C2F83271A3CE00008B7AB /* EventsTableViewCell.swift in Sources */,
 				411C2F5B271A03390008B7AB /* URLRequestBuilder.swift in Sources */,
 				41127121271B1D1D002F72E0 /* RxSwift+Extension.swift in Sources */,
@@ -742,7 +742,7 @@
 				411C2F61271A07410008B7AB /* APIError.swift in Sources */,
 				411C2F5F271A05400008B7AB /* EventtusRouter.swift in Sources */,
 				41C6E062271C87AC000C6D1F /* LoadingIndicatorType.swift in Sources */,
-				41771972271DF61000F9B27B /* StorageSession.swift in Sources */,
+				41771972271DF61000F9B27B /* StorageService.swift in Sources */,
 				41771978271E25A200F9B27B /* EventDetailsCoordinator.swift in Sources */,
 				411C2F6B271A18DA0008B7AB /* Typealias.swift in Sources */,
 				411C2F63271A07F20008B7AB /* APIClient.swift in Sources */,

@@ -1,5 +1,5 @@
 //
-//  RealmService.swift
+//  StorageManager.swift
 //  EventApp
 //
 //  Created by Ali Elsokary on 17/10/2021.
@@ -9,9 +9,7 @@
 import Foundation
 import RealmSwift
 
-class RealmService {
-
-	static let shared = RealmService()
+class StorageManager {
 
 	var realm = try? Realm()
 

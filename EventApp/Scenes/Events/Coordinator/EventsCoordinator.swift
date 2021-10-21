@@ -12,6 +12,7 @@ class EventsCoordinator: BaseCoordinator<Void> {
 
 	private let rootViewController: UIViewController
 	private let service = EventsServiceImpl()
+	private let storageService = StorageServiceImpl()
 
 	init(rootViewController: UIViewController) {
 		self.rootViewController = rootViewController
