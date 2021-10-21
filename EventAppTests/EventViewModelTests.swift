@@ -11,7 +11,6 @@ import XCTest
 
 class EventViewModelTests: XCTestCase {
 
-	var sut: EventViewModel!
 	let event = Event(id: "1",
 					  name: "abc",
 					  cover: "https",
@@ -21,10 +20,13 @@ class EventViewModelTests: XCTestCase {
 					  startDate: "Wednesday, September 7, 2016 3:29 PM",
 					  endDate: "Saturday, December 3, 2016 8:50 AM")
 
+	var sut: EventViewModel!
+	var storageServiceMock: RealmServiceMock!
+
     override func setUpWithError() throws {
 		super.setUp()
-		sut = EventViewModel(event: event)
-		sut?.realmService = RealmServiceMock.sharedMock
+		storageServiceMock = RealmServiceMock()
+		sut = EventViewModel(event: event, storageService: storageServiceMock)
     }
 
     override func tearDownWithError() throws {
@@ -65,23 +67,30 @@ class EventViewModelTests: XCTestCase {
 	}
 
 	func test_addEvent_to_favorites() {
-		sut?.addToFavorite(event: sut!)
-		XCTAssert(RealmServiceMock.sharedMock.addToFavoriteCalled)
+		sut?.storageService.addToFavorite(event: sut!)
+		XCTAssert(storageServiceMock.addToFavoriteCalled)
 	}
 
 	func test_fetchEvent_from_favorites() {
-		_ = sut?.favoritedEvent(event: sut!)
-		XCTAssert(RealmServiceMock.sharedMock.fetchFavoriteObjectCalled)
+		_ = sut?.storageService.favoritedEvent(event: sut!)
+		XCTAssert(storageServiceMock.fetchFavoriteObjectCalled)
+	}
+
+	func test_fetchedEvent_is_favoriteEvent() {
+		sut?.storageService.addToFavorite(event: sut!)
+		let fetchedEvent = sut?.storageService.favoritedEvent(event: sut!)
+		let result = sut?.storageService.isFavorited(event: fetchedEvent!) == true
+		XCTAssertTrue(result)
 	}
 
 	func test_removeEvent_from_favorites() {
-		sut?.removeFromFavorite(event: sut!)
-		XCTAssert(RealmServiceMock.sharedMock.removeFromFavoriteCalled)
+		sut?.storageService.removeFromFavorite(event: sut!)
+		XCTAssert(storageServiceMock.removeFromFavoriteCalled)
 	}
 
 	func test_availableEvent_after_save() {
-		sut?.addToFavorite(event: sut!)
-		let availableEvent = sut?.isFavorited(event: sut!)
+		sut?.storageService.addToFavorite(event: sut!)
+		let availableEvent = sut?.storageService.isFavorited(event: sut!)
 		XCTAssertNotNil(availableEvent)
 	}
 
